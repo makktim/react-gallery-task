@@ -1,0 +1,27 @@
+{
+  "name": "private-front-end-bootcamp-task",
+  "version": "1.0.0",
+  "description": "Responsive gallery ",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makktim/private-front-end-bootcamp-task.git"
+  },
+  "author": "makktim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/makktim/private-front-end-bootcamp-task/issues"
+  },
+  "homepage": "https://github.com/makktim/private-front-end-bootcamp-task#readme",
+  "dependencies": {
+    "concurrently": "^4.1.2",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  }
+}
