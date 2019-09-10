@@ -1,4 +1,5 @@
 import React , {Component} from 'react';
+import './performers.css';
 
 class Performers extends Component {
     constructor(){
@@ -18,16 +19,17 @@ class Performers extends Component {
     render(){
         return (
             <div>
-                <h2>performers</h2>
-
-                <div>
+                <h2 className="title">Gallery</h2>
+            <div className="gallery-content">
+                <div className="gallery">
                     {this.state.performers.map(function (item, index) {
                         return (
                             {/*<src key={index}>{item.profilePictureUrl}</src>*/},
-                            <img key={index} src={item.profilePictureUrl} alt="text" />
+                            <img className="image" key={index} src={item.profilePictureUrl} alt="" />
                         )
                     })}
                 </div>
+            </div>
             </div>
         );
     }
