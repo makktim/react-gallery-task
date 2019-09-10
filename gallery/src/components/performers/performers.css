@@ -38,19 +38,19 @@
 }
 
 @media screen and (max-width: 960px){
-    .title .image{
+     .image{
         flex: 33%;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .title .image {
+    .image {
         flex: 50%;
     }
 }
 
     @media screen and (max-width: 480px) {
-        .title .image {
+         .image {
             flex: 100%;
         }
 }
