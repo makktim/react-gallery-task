@@ -23,7 +23,9 @@ class PerformerList extends Component {
                 <div className="gallery">
                     {this.state.performers.map(function (item, index) {
                         return (
+                            <a href="https://www.google.com">
                             <img className="image" key={index} src={item.profilePictureUrl} alt="" />
+                            </a>
                         )
                     })}
                 </div>
