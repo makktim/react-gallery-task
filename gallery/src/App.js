@@ -1,5 +1,5 @@
 import React from 'react';
-import PerformerList from "./components/performers/performerList";
+import PerformerList from "./pages/PerformerList";
 
 function App() {
     return (
