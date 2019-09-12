@@ -1,16 +1,9 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
-import Body from './Page';
+import Body from './BodySize';
 import {device} from './Device';
-import './PerformerList.css';
 
 
-const Title = styled.h2`
-    padding: 20px;
-    text-align: center;
-    background: darkred;
-    color: beige;
-`;
 
 const Gallery = styled.div`
     width: 100%;
@@ -21,9 +14,9 @@ const Gallery = styled.div`
 
 const Image = styled.img`   
     flex: 25%;
-    margin: 2px;
     overflow: hidden;
     cursor: pointer;
+    margin: 5px;
     width: 100%;
     height: 100%;
     &:hover{
@@ -32,19 +25,42 @@ const Image = styled.img`
         box-shadow: -1px 1px 3px 3px darkred;
       
     }
+    
 `;
 
 const GalleryContent = styled.div`
-         @media ${device.mobile} {
+
+
+     @media screen and ${device.mobileS} {
+         flex: 100%;
+     }
+     
+     @media screen and ${device.mobileM} {
+         flex: 100%;
+     }
+     
+      @media screen and ${device.mobileL} {
          flex: 100%;
      }
 
-    @media ${device.tablet} {
+    @media screen and ${device.tablet} {
         flex: 50%;
+        margin: 2px;
     }
     
-    @media ${device.laptop}{
+    @media screen and ${device.laptop}{
+        flex: 50%;
+        margin: 2px;
+    }
+    
+    @media screen and ${device.laptopL}{
         flex: 33%;
+        margin: 2px;
+    }
+    
+    @media screen and ${device.desktop}{
+        flex: 33%;
+        margin: 2px;
     }
 `;
 
@@ -66,7 +82,6 @@ class PerformerList extends Component {
     render() {
         return (
             <Body>
-                <Title>Gallery</Title>
                 <Gallery>
                     {this.state.performers.map(function (item, index) {
                         return (

@@ -1,11 +1,11 @@
 import React from 'react';
 import PerformerList from "./pages/PerformerList";
+import NavBar from "./pages/NavBar";
 
 function App() {
     return (
         <div className="App">
-            <header className="App-header">
-            </header>
+            <NavBar/>
             <PerformerList/>
         </div>
     );
