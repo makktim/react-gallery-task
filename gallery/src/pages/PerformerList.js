@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
 import Body from './BodySize';
-import {device} from './Device';
-
+import {Device} from './Device';
 
 
 const Gallery = styled.div`
@@ -31,34 +30,34 @@ const Image = styled.img`
 const GalleryContent = styled.div`
 
 
-     @media screen and ${device.mobileS} {
+     @media screen and ${Device.mobileS} {
          flex: 100%;
      }
      
-     @media screen and ${device.mobileM} {
+     @media screen and ${Device.mobileM} {
          flex: 100%;
      }
      
-      @media screen and ${device.mobileL} {
+      @media screen and ${Device.mobileL} {
          flex: 100%;
      }
 
-    @media screen and ${device.tablet} {
+    @media screen and ${Device.tablet} {
         flex: 50%;
         margin: 2px;
     }
     
-    @media screen and ${device.laptop}{
+    @media screen and ${Device.laptop}{
         flex: 50%;
         margin: 2px;
     }
     
-    @media screen and ${device.laptopL}{
+    @media screen and ${Device.laptopL}{
         flex: 33%;
         margin: 2px;
     }
     
-    @media screen and ${device.desktop}{
+    @media screen and ${Device.desktop}{
         flex: 33%;
         margin: 2px;
     }

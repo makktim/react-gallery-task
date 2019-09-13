@@ -1,5 +1,5 @@
 import Styled from 'styled-components';
-import {device} from './Device';
+import {Device} from './Device';
 
 const Body = Styled.div`
     padding: 0px;
@@ -7,31 +7,31 @@ const Body = Styled.div`
     box-sizing: border-box;
     background: beige;
     
-    @media screen and ${device.mobileS} {
+    @media screen and ${Device.mobileS} {
          max-width: 300px
      }
      
-    @media screen and ${device.mobileM} {
+    @media screen and ${Device.mobileM} {
          max-width: 350px
      }
      
-     @media screen and ${device.mobileL} {
+     @media screen and ${Device.mobileL} {
          max-width: 480px
      }
 
-    @media screen and ${device.tablet} {
+    @media screen and ${Device.tablet} {
         max-width: 768px
     }
     
-    @media screen and ${device.laptop} {
+    @media screen and ${Device.laptop} {
         max-width: 800px;
   }
   
-    @media screen and ${device.laptopL}{
+    @media screen and ${Device.laptopL}{
         max-width: 1830px
     }
 
-    @media screen and ${device.desktop} {
+    @media screen and ${Device.desktop} {
         max-width: 2120px;
   }
 
