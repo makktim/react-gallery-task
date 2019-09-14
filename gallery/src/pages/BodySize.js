@@ -2,10 +2,6 @@ import Styled from 'styled-components';
 import {Device} from './Device';
 
 const Body = Styled.div`
-    padding: 0px;
-    margin: auto;
-    box-sizing: border-box;
-    background: beige;
     
     @media screen and ${Device.mobileS} {
          max-width: 300px
@@ -24,7 +20,7 @@ const Body = Styled.div`
     }
     
     @media screen and ${Device.laptop} {
-        max-width: 800px;
+        max-width: 1160px;
   }
   
     @media screen and ${Device.laptopL}{

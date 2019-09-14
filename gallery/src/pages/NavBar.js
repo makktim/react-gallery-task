@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
-import Styled from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
-const NavBarStyle = Styled.div`   
+const NavBarStyle = styled.div`   
     background: darkred;
     color: beige;
     overflow: hidden;
@@ -18,8 +19,9 @@ const NavBarStyle = Styled.div`
 `;
 
 
-const ButtonStyle = Styled.div` 
+const ButtonStyle = styled.a` 
     float: right;
+    color: beige;
     margin: 5px;
     padding: 15px;
     cursor: pointer;
@@ -38,10 +40,9 @@ const ButtonStyle = Styled.div`
     
 `;
 
-const Title = Styled.h2`
+const Title = styled.h2`
     text-align: left;
     margin-left: 15px;
-    background: darkred;
     color: beige;
     
     @media screen and (max-width: 768px) {
@@ -50,17 +51,17 @@ const Title = Styled.h2`
 `;
 
 
-class NavBar extends Component {
-    render() {
-        return (
-            <NavBarStyle>
-                <ButtonStyle>Gallery</ButtonStyle>
-                <ButtonStyle>Contact</ButtonStyle>
-                <ButtonStyle>About</ButtonStyle>
-                <Title>Gallery</Title>
-            </NavBarStyle>
-        )
-    }
+const NavBar = () => {
+  return (
+    <NavBarStyle>
+      <ButtonStyle><Link to="/gallery">Gallery</Link></ButtonStyle>
+      <ButtonStyle><Link to="/Promotion">Promotion</Link></ButtonStyle>
+      <ButtonStyle><Link to="/awards">Awards</Link></ButtonStyle>
+      {/*<ButtonStyle as={Link} href="/gallery" prefetch>newG</ButtonStyle>*/}
+      <Title>Gallery</Title>
+    </NavBarStyle>
+
+  )
 }
 
 export default NavBar;

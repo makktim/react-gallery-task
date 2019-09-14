@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styled from "styled-components";
+import axios from 'axios';
 import Body from './BodySize';
-import {Device} from './Device';
+import { Device } from './Device';
 
 
 const Gallery = styled.div`
@@ -15,7 +16,8 @@ const Image = styled.img`
     flex: 25%;
     overflow: hidden;
     cursor: pointer;
-    margin: 5px;
+    background-color: burlywood;
+    padding-top: 5px;
     width: 100%;
     height: 100%;
     &:hover{
@@ -29,9 +31,11 @@ const Image = styled.img`
 
 const GalleryContent = styled.div`
 
+    background: beige;
 
      @media screen and ${Device.mobileS} {
          flex: 100%;
+         margin: 2px;
      }
      
      @media screen and ${Device.mobileM} {
@@ -43,12 +47,12 @@ const GalleryContent = styled.div`
      }
 
     @media screen and ${Device.tablet} {
-        flex: 50%;
+        flex: 49%;
         margin: 2px;
     }
     
     @media screen and ${Device.laptop}{
-        flex: 50%;
+        flex: 33%;
         margin: 2px;
     }
     
@@ -65,30 +69,39 @@ const GalleryContent = styled.div`
 
 
 class PerformerList extends Component {
-    constructor() {
-        super();
-        this.state = {
+
+    state = {
             performers: []
         }
-    }
 
     componentDidMount() {
-        fetch('/en/list-page-ajax/show-more-json/0/')
-            .then(results => results.json())
-            .then(performers => this.setState({'performers': performers.data.content.performers}))
+        axios.get('/en/list-page-ajax/show-more-json/0/')
+            .then(res => {
+                console.log(res)
+                this.setState({ 'performers': res.data.data.content.performers})})
     }
 
     render() {
+        const { performers } = this.state;
+        const performerList = performers.length ? (
+            performers.map(performer => {
+                return (
+                    <GalleryContent>
+                        <Image key={performer.id} src={performer.profilePictureUrl} alt=""/>
+                    </GalleryContent>
+                )
+            })
+        ) : (
+            <GalleryContent>
+                <p>No Models</p>
+            </GalleryContent>
+
+        );
+
         return (
             <Body>
                 <Gallery>
-                    {this.state.performers.map(function (item, index) {
-                        return (
-                            <GalleryContent>
-                                <Image key={index} src={item.profilePictureUrl} alt=""/>
-                            </GalleryContent>
-                        )
-                    })}
+                    {performerList}
                 </Gallery>
             </Body>
         );
