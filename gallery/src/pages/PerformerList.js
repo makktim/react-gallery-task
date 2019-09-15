@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from 'axios';
 import Body from './BodySize';
 import { Device } from './Device';
+import {Link} from 'react-router-dom';
 
 
 const Gallery = styled.div`
@@ -87,7 +88,9 @@ class PerformerList extends Component {
             performers.map(performer => {
                 return (
                     <GalleryContent>
-                        <Image key={performer.id} src={performer.profilePictureUrl} alt=""/>
+                        <Link to={'/en/gallery/' + performer.pid + '/folders'}>
+                        <Image key={performer.pid} src={performer.profilePictureUrl} alt=""/>
+                        </Link>
                     </GalleryContent>
                 )
             })

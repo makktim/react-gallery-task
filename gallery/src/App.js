@@ -5,6 +5,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Awards from "./pages/Awards";
 import Promotion from "./pages/Promotion";
 import styled from "styled-components";
+import PerformerImages from "./pages/PerformerImages";
 
 const Body = styled.div`
     background-color: burlywood;
@@ -25,6 +26,7 @@ class App extends Component {
                     <Route path='/gallery' component={PerformerList} />
                     <Route path='/promotion' component={Promotion} />
                     <Route path='/awards' component={Awards} />
+                    <Route path="/en/gallery/:pid/folders" component={PerformerImages} />
                 </Body>
             </BrowserRouter>
         );

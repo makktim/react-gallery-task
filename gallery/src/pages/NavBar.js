@@ -19,7 +19,7 @@ const NavBarStyle = styled.div`
 `;
 
 
-const ButtonStyle = styled.a` 
+const ButtonStyle = styled.div` 
     float: right;
     color: beige;
     margin: 5px;
@@ -57,7 +57,6 @@ const NavBar = () => {
       <ButtonStyle><Link to="/gallery">Gallery</Link></ButtonStyle>
       <ButtonStyle><Link to="/Promotion">Promotion</Link></ButtonStyle>
       <ButtonStyle><Link to="/awards">Awards</Link></ButtonStyle>
-      {/*<ButtonStyle as={Link} href="/gallery" prefetch>newG</ButtonStyle>*/}
       <Title>Gallery</Title>
     </NavBarStyle>
 
