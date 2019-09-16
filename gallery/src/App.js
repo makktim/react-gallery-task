@@ -1,12 +1,12 @@
 import React from 'react';
-import Performers from "./components/performers/performers";
+import PerformerList from "./pages/PerformerList";
+import NavBar from "./pages/NavBar";
 
 function App() {
     return (
         <div className="App">
-            <header className="App-header">
-            </header>
-            <Performers/>
+            <NavBar/>
+            <PerformerList/>
         </div>
     );
 }
