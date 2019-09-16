@@ -15,32 +15,31 @@ const NavBarStyle = styled.nav`
     right: 0;
     top: 0;
   }
-
-`;
-
-
-const ButtonStyle = styled.div`
+  
+  .link{
+    background: darkred;
+    color: beige;
+    overflow: hidden;
+    text-decoration: none;
     float: right;
     margin: 5px;
     padding: 15px;
     cursor: pointer;
-    &:hover{
+    
+        &:hover{
           background-color: beige;
           color: darkred;
     }
-    &:active{
+    
+        &:active{
           background-color: beige;
           color: darkred;
      }
-
-      @media screen and (max-width: 768px) {
-         margin 10px;
+     
+           @media screen and (max-width: 768px) {
+                 margin 10px;
+  } 
   }
-
-  .link{
-      color: beige;
-      }
-
 
 `;
 
@@ -58,23 +57,12 @@ const Title = styled.h2`
 const NavBar = () => {
   return (
     <NavBarStyle>
-      <ButtonStyle><Link to="/gallery">Gallery</Link></ButtonStyle>
-      <ButtonStyle><Link to="/Promotion">Promotion</Link></ButtonStyle>
-      <ButtonStyle><Link to="/awards">Awards</Link></ButtonStyle>
-        <ButtonStyle><Link to="/NoMatch">Awards</Link></ButtonStyle>
+      <Link to="/gallery" className="link">Gallery</Link>
+      <Link to="/Promotion" className="link">Promotion</Link>
+      <Link to="/awards" className="link">Awards</Link>
       <Title>Gallery</Title>
     </NavBarStyle>
 
   )
 };
-
-
-// const NavBar = () => {
-//     return(
-//         <NavBarStyle>
-//             <DesktopNavBar />
-//             <MobileNavBar />
-//         </NavBarStyle>
-//     )
-// }
 export default NavBar;

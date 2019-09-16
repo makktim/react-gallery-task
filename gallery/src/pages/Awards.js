@@ -5,7 +5,7 @@ const Awards = () => {
         <div>
             <h1>Awards</h1>
         </div>
-        )
+    )
 
 }
 
