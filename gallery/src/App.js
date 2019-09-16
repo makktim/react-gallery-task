@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PerformerList from "./pages/PerformerList";
-import NavBar from "./pages/NavBar";
-import { BrowserRouter, Route } from "react-router-dom";
+import NavBar from "./navigation/NavBar";
+import {BrowserRouter, Route} from "react-router-dom";
 import Awards from "./pages/Awards";
 import Promotion from "./pages/Promotion";
 import styled from "styled-components";
@@ -27,6 +27,7 @@ class App extends Component {
                     <Route path='/promotion' component={Promotion} />
                     <Route path='/awards' component={Awards} />
                     <Route path="/en/gallery/:pid/folders" component={PerformerImages} />
+
                 </Body>
             </BrowserRouter>
         );

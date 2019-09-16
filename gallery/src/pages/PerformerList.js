@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import styled from "styled-components";
 import axios from 'axios';
 import Body from './BodySize';
-import { Device } from './Device';
+import {Device} from './Device';
 import {Link} from 'react-router-dom';
 
 
@@ -28,11 +28,11 @@ const Image = styled.img`
       
     }
     
+    
 `;
 
 const GalleryContent = styled.div`
-
-    background: beige;
+    
 
      @media screen and ${Device.mobileS} {
          flex: 100%;
@@ -72,24 +72,25 @@ const GalleryContent = styled.div`
 class PerformerList extends Component {
 
     state = {
-            performers: []
-        }
+        performers: []
+    }
 
     componentDidMount() {
         axios.get('/en/list-page-ajax/show-more-json/0/')
             .then(res => {
                 console.log(res)
-                this.setState({ 'performers': res.data.data.content.performers})})
+                this.setState({'performers': res.data.data.content.performers})
+            })
     }
 
     render() {
-        const { performers } = this.state;
+        const {performers} = this.state;
         const performerList = performers.length ? (
             performers.map(performer => {
                 return (
                     <GalleryContent>
                         <Link to={'/en/gallery/' + performer.pid + '/folders'}>
-                        <Image key={performer.pid} src={performer.profilePictureUrl} alt=""/>
+                            <Image key={performer.pid} src={performer.profilePictureUrl} alt=""/>
                         </Link>
                     </GalleryContent>
                 )

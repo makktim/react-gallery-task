@@ -28,10 +28,10 @@ class PerformerImages extends Component{
 //
 //     componentDidMount() {
 //         let modelName = this.props.match.params.pid;
-//         axios.get('/en/gallery/' + modelName + '/folders')
+//         axios.get('http://localhost:3001/en/list-page-ajax/show-more-json/0/')
 //             .then(res => {
 //                 this.setState({
-//                     modelName: res.data.data
+//                     modelName: res.data.data.content.performers.pid
 //                 })
 //                 console.log(res)
 //             })
