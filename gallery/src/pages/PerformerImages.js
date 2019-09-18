@@ -3,24 +3,24 @@ import styled from "styled-components";
 import axios from 'axios';
 import Body from './BodySize';
 import {Device} from './Device';
-import lock from '../images/lock.svg';
+import lock from '../images/lockicon.png';
 
 
 const Gallery = styled.div`
     width: 100%;
+    background-size: 100%;
+    background-position: center;
     display: flex;
     flex-wrap: wrap-reverse;
     justify-content: center;
 `;
 
-const ImagePublic = styled.img`   
-    flex: 25%;
-    overflow: hidden;
+const ImagePublic = styled.img`
+  display: flex;
+  justify-content: center;
     cursor: pointer;
     background-color: burlywood;
     padding-top: 5px;
-    width: 100%;
-    height: 100%;
     &:hover{
         opacity: 0.5;
         border: darkred 1px solid;
@@ -31,20 +31,19 @@ const ImagePublic = styled.img`
 `;
 
 const ImagePrivate = styled.img`
-    flex: 25%;
-    overflow: hidden;
     cursor: pointer;
-    background-color: black;
+    background-color: burlywood;
     padding-top: 5px;
-    width: 100%;
-    height: 100%;
     &:hover{
         opacity: 0.5;
-        border: black 1px solid;
-        box-shadow: -1px 1px 3px 3px black;
-
+        border: darkred 1px solid;
+        box-shadow: -1px 1px 3px 3px darkred;
     }
+`;
 
+const LockImg = styled.img`
+    position: absolute;
+    margin:15px;
 `;
 
 const GalleryContent = styled.div`
@@ -69,17 +68,17 @@ const GalleryContent = styled.div`
     }
     
     @media screen and ${Device.laptop}{
-        flex: 33%;
+        flex: 24%;
         margin: 2px;
     }
     
     @media screen and ${Device.laptopL}{
-        flex: 33%;
+        flex: 24%;
         margin: 2px;
     }
     
     @media screen and ${Device.desktop}{
-        flex: 33%;
+        flex: 24%;
         margin: 2px;
     }
 `;
@@ -87,33 +86,54 @@ const GalleryContent = styled.div`
 
 class PerformerImages extends Component {
 
+    handleMouseHover = this.handleMouseHover.bind(this);
+
     state = {
-        modelPictures: []
+        modelPictures: [],
+        isHovering: false
     }
+
+    handleMouseHover() {
+        this.setState(this.toggleHoverState);
+    }
+
+    toggleHoverState(state) {
+        return {
+            isHovering: !state.isHovering,
+        };
+    }
+
 
     componentDidMount() {
         let modelName = this.props.match.params.pid;
-        axios.get('/en/gallery/' + modelName + '/folders' )
+        axios.get('/en/gallery/' + modelName + '/folders')
             .then(res => {
                 console.log(res)
                 this.setState({'modelPictures': res.data.data})
             })
     }
 
+
     render() {
+
         const {modelPictures} = this.state;
         const modelPictureList = modelPictures.length ? (
             modelPictures.map(modelPicture => {
-                if(modelPicture.privacy === "exclusive"){
+                if (modelPicture.privacy === "exclusive") {
                     return (
                         <GalleryContent>
-                                <img className="lockImage" src={lock} alt="" />
-                            <ImagePrivate key={modelPicture.pid} src={modelPicture.previewImageUrl} alt=""/>
+                            {this.state.isHovering && <LockImg className="lockImage" src={lock} alt=""/>}
+                            <ImagePrivate key={modelPicture.pid}
+                                onMouseEnter={this.handleMouseHover}
+                                onMouseLeave={this.handleMouseHover}
+                                          onChange={this.handleChange}
+                                          src={modelPicture.previewImageUrl} alt=""/>
 
+                            {/*<Img src={lock} alt=""/>*/}
                         </GalleryContent>
                     )
 
-                }else{
+                } else {
                     return (
                         <GalleryContent>
                             <ImagePublic key={modelPicture.pid} src={modelPicture.previewImageUrl} alt=""/>

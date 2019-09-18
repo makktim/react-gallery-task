@@ -58,12 +58,12 @@ const GalleryContent = styled.div`
     }
     
     @media screen and ${Device.laptopL}{
-        flex: 33%;
+        flex: 24%;
         margin: 2px;
     }
     
     @media screen and ${Device.desktop}{
-        flex: 33%;
+        flex: 24%;
         margin: 2px;
     }
 `;
