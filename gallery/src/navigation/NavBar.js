@@ -15,7 +15,7 @@ const NavBarStyle = styled.nav`
     right: 0;
     top: 0;
   }
-  
+
   .link{
     background: darkred;
     color: beige;
@@ -25,20 +25,20 @@ const NavBarStyle = styled.nav`
     margin: 5px;
     padding: 15px;
     cursor: pointer;
-    
+
         &:hover{
           background-color: beige;
           color: darkred;
     }
-    
+
         &:active{
           background-color: beige;
           color: darkred;
      }
-     
+
            @media screen and (max-width: 768px) {
                  margin 10px;
-  } 
+  }
   }
 
 `;
@@ -58,8 +58,6 @@ const NavBar = () => {
   return (
     <NavBarStyle>
       <Link to="/gallery" className="link">Gallery</Link>
-      <Link to="/Promotion" className="link">Promotion</Link>
-      <Link to="/awards" className="link">Awards</Link>
       <Title>Gallery</Title>
     </NavBarStyle>
 

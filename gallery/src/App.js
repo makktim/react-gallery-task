@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import PerformerList from "./pages/PerformerList";
+import PerformerList from "./pages/performersList/PerformerList";
 import NavBar from "./navigation/NavBar";
 import {BrowserRouter, Route} from "react-router-dom";
-import Awards from "./pages/Awards";
-import Promotion from "./pages/Promotion";
 import styled from "styled-components";
-import PerformerImages from "./pages/PerformerImages";
+import PerformerAlbumList from "./pages/PerformerAlbumList";
+import PerformerImageList from "./pages/PerformerImageList";
 
 const Body = styled.div`
     background-color: burlywood;
@@ -24,10 +23,8 @@ class App extends Component {
                     <NavBar />
                     <Route exact path='/' component={PerformerList} />
                     <Route path='/gallery' component={PerformerList} />
-                    <Route path='/promotion' component={Promotion} />
-                    <Route path='/awards' component={Awards} />
-                    <Route path="/en/gallery/:pid/folders" component={PerformerImages} />
-
+                    <Route path="/en/gallery/:pid/folders" component={PerformerAlbumList} />
+                    <Route path="/en/gallery/:pid/image-folder-content/:id/" component={PerformerImageList} />
                 </Body>
             </BrowserRouter>
         );
