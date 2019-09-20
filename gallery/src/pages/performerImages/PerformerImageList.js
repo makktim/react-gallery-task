@@ -1,4 +1,4 @@
-import PerformerListReducer, {SET_LIST} from "./performersList/PerformerListReducer";
+import PerformerListReducer, {SET_LIST} from "../performersList/PerformerListReducer";
 import React, {useEffect, useReducer} from 'react';
 import axios from "axios";
 import PerformerImage from "./PerformerImage";

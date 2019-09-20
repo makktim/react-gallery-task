@@ -3,15 +3,13 @@ import PerformerList from "./pages/performersList/PerformerList";
 import NavBar from "./navigation/NavBar";
 import {BrowserRouter, Route} from "react-router-dom";
 import styled from "styled-components";
-import PerformerAlbumList from "./pages/PerformerAlbumList";
-import PerformerImageList from "./pages/PerformerImageList";
+import PerformerAlbumList from "./pages/performerAlbums/PerformerAlbumList";
+import PerformerImageList from "./pages/performerImages/PerformerImageList";
 
 const Body = styled.div`
-    background-color: burlywood;
     padding: 0px;
-    margin: auto;
-    box-sizing: border-box;
-
+    margin: 0px;
+    background-color: burlywood;
 `;
 
 

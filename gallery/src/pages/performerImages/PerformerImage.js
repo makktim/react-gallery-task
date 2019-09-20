@@ -1,6 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import './performersList/gallery.css';
+import '../performersList/gallery.css';
 
 export default (props) => {
 

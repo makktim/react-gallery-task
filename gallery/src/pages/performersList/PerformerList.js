@@ -85,6 +85,7 @@ export default () => {
 
     const renderPerformer = (performer, index) => {
         return(
+
             <Performer key={index} performer={performer} />
         )
     };
