@@ -1,5 +1,5 @@
-import PerformerListReducer, {SET_LIST} from "../performersList/PerformerListReducer";
-import React, {useEffect, useReducer} from 'react';
+import PerformerListReducer, { SET_LIST } from "../PerformerListReducer";
+import React, { useEffect, useReducer } from 'react';
 import axios from "axios";
 import PerformerImage from "./PerformerImage";
 
@@ -12,7 +12,7 @@ export default (props) => {
     let folderId = props.match.params.id;
 
     const getList = async () => {
-        const {data} = await axios.get('/en/gallery/' + modelName + '/image-folder-content/' + folderId)
+        const { data } = await axios.get('/en/gallery/' + modelName + '/image-folder-content/' + folderId)
         console.log(modelName)
         console.log(data)
 
@@ -28,7 +28,7 @@ export default (props) => {
     }, []);
 
     const renderPerformerImage = (performerImage, index) => {
-        return(
+        return (
             <PerformerImage key={index} performerImage={performerImage} />
         )
     };

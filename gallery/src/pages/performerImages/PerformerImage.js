@@ -1,20 +1,25 @@
 import React from 'react';
-import '../performersList/gallery.css';
+import {GalleryImage, Img, ImgBox, Caption, PublicTransparentBox} from '../style';
+import {Link} from "react-router-dom";
 
 export default (props) => {
 
-    const {performerImage: {previewImageUrl}} = props;
+    const {performerImage: {previewImageUrl, url}} = props;
+
 
     return (
-        <div className="gallery-image">
-            <div className="img-box">
-                <img src={previewImageUrl} alt=""/>
-                <div className="transparent-box">
-                    <div className="caption">
-                    </div>
-                </div>
-            </div>
-        </div>
+        <GalleryImage>
+            <ImgBox>
+                <Link to={url}>
+                    <Img src={previewImageUrl} alt=""/>
+                    <PublicTransparentBox>
+                        <Caption>
+                        </Caption>
+                    </PublicTransparentBox>
+                </Link>
+            </ImgBox>
+        </GalleryImage>
+
     )
 
 };

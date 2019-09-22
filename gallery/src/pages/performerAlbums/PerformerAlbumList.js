@@ -1,6 +1,6 @@
-import React, {useEffect, useReducer} from 'react';
+import React, { useEffect, useReducer } from 'react';
 import axios from 'axios';
-import PerformerListReducer, {SET_LIST} from "../performersList/PerformerListReducer";
+import PerformerListReducer, { SET_LIST } from "../PerformerListReducer";
 import PerformerAlbum from "./PerformerAlbum";
 
 
@@ -9,9 +9,8 @@ export default (props) => {
     let modelName = props.match.params.pid;
 
     const getList = async () => {
-        const {data} = await axios.get('/en/gallery/' + modelName + '/folders')
-        console.log(data);
-        console.log(props);
+        const { data } = await axios.get('/en/gallery/' + modelName + '/folders')
+
         dispatch({
             type: SET_LIST,
             list: data.data
@@ -25,8 +24,8 @@ export default (props) => {
 
     const renderPerformerAlbum = (performerAlbum, index) => {
         let modelName = props.match.params.pid;
-        return(
-            <PerformerAlbum key={index} performerAlbum={performerAlbum} modelName = {modelName} />
+        return (
+            <PerformerAlbum key={index} performerAlbum={performerAlbum} modelName={modelName} />
         )
     };
 

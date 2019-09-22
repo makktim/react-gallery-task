@@ -1,30 +1,28 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-// import './gallery.css';
-import {GalleryImage, Img, ImgBox, Caption, TransparentBox} from '../style';
+import {GalleryImage, Img, ImgBox, Caption, PublicTransparentBox} from '../style';
 
 
 export default (props) => {
 
     const {performer: {profilePictureUrl, pid, id}} = props;
-    console.log(id);
 
-    if(id !== "promotion"){
+    if (id !== "promotion") {
         return (
             <GalleryImage>
                 <ImgBox>
                     <Link to={'/en/gallery/' + pid + '/folders'}>
                         <Img src={profilePictureUrl} alt=""/>
-                        <TransparentBox>
+                        <PublicTransparentBox>
                             <Caption>
                                 <p>{pid}</p>
                             </Caption>
-                        </TransparentBox>
+                        </PublicTransparentBox>
                     </Link>
                 </ImgBox>
             </GalleryImage>
         )
-    }else{
+    } else {
         return null;
     }
 

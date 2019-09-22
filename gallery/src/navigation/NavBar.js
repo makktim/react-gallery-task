@@ -43,22 +43,11 @@ const NavBarStyle = styled.nav`
 
 `;
 
-const Title = styled.h2`
-    text-align: left;
-    margin-left: 15px;
-    color: beige;
-
-    @media screen and (max-width: 768px) {
-         text-align: center;
-  }
-`;
-
 
 const NavBar = () => {
   return (
     <NavBarStyle>
       <Link to="/gallery" className="link">Gallery</Link>
-      <Title>Gallery</Title>
     </NavBarStyle>
 
   )

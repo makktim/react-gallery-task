@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PerformerList from "./pages/performersList/PerformerList";
 import NavBar from "./navigation/NavBar";
-import {BrowserRouter, Route} from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import styled from "styled-components";
 import PerformerAlbumList from "./pages/performerAlbums/PerformerAlbumList";
 import PerformerImageList from "./pages/performerImages/PerformerImageList";
@@ -23,6 +23,7 @@ class App extends Component {
                     <Route path='/gallery' component={PerformerList} />
                     <Route path="/en/gallery/:pid/folders" component={PerformerAlbumList} />
                     <Route path="/en/gallery/:pid/image-folder-content/:id/" component={PerformerImageList} />
+                    <Route path=":url/" />
                 </Body>
             </BrowserRouter>
         );
