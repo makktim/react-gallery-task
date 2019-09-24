@@ -6,10 +6,10 @@ import PerformerAlbum from "./PerformerAlbum";
 
 export default (props) => {
     const [performerAlbumList, dispatch] = useReducer(PerformerListReducer, []);
-    let modelName = props.match.params.pid;
+    const modelName = props.match.params.pid;
 
     const getList = async () => {
-        const { data } = await axios.get('/en/gallery/' + modelName + '/folders')
+        const { data } = await axios.get('/en/gallery/' + modelName + '/folders');
 
         dispatch({
             type: SET_LIST,
@@ -23,7 +23,8 @@ export default (props) => {
     }, []);
 
     const renderPerformerAlbum = (performerAlbum, index) => {
-        let modelName = props.match.params.pid;
+
+        const modelName = props.match.params.pid;
         return (
             <PerformerAlbum key={index} performerAlbum={performerAlbum} modelName={modelName} />
         )

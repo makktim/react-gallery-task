@@ -1,18 +1,17 @@
 import PerformerListReducer, { SET_LIST } from "../PerformerListReducer";
 import React, { useEffect, useReducer } from 'react';
 import axios from "axios";
-import PerformerImage from "./PerformerImage";
+import PerformerVideo from "./PerformerVideo";
 
 export default (props) => {
 
     console.log(props);
-    const [performerImageList, dispatch] = useReducer(PerformerListReducer, []);
+    const [performerVideoList, dispatch] = useReducer(PerformerListReducer, []);
 
     const modelName = props.match.params.pid;
-    const folderId = props.match.params.id;
 
     const getList = async () => {
-        const { data } = await axios.get('/en/gallery/' + modelName + '/image-folder-content/' + folderId)
+        const { data } = await axios.get('/en/gallery/' + modelName + '/video-folder-content/public')
         console.log(modelName)
         console.log(data)
 
@@ -27,15 +26,15 @@ export default (props) => {
 
     }, []);
 
-    const renderPerformerImage = (performerImage, index) => {
+    const renderPerformerVideo = (performerVideo, index) => {
         return (
-            <PerformerImage key={index} performerImage={performerImage} />
+            <PerformerVideo key={index} performerImage={performerVideo} />
         )
     };
 
     return (
         <div>
-            {performerImageList.length > 0 && performerImageList.map(renderPerformerImage)}
+            {performerVideoList.length > 0 && performerVideoList.map(renderPerformerVideo)}
         </div>
     )
 

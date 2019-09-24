@@ -5,6 +5,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import styled from "styled-components";
 import PerformerAlbumList from "./pages/performerAlbums/PerformerAlbumList";
 import PerformerImageList from "./pages/performerImages/PerformerImageList";
+import PerformerVideoList from "./pages/performerVideos/PerformerVideoList";
 
 const Body = styled.div`
     padding: 0px;
@@ -23,6 +24,8 @@ class App extends Component {
                     <Route path='/gallery' component={PerformerList} />
                     <Route path="/en/gallery/:pid/folders" component={PerformerAlbumList} />
                     <Route path="/en/gallery/:pid/image-folder-content/:id/" component={PerformerImageList} />
+                    <Route path="/en/gallery/:pid/video-folder-content/public/" component={PerformerVideoList} />
+                    <Route path="/en/gallery/:pid/video-folder-content/exclusive/" component={PerformerVideoList} />
                     <Route path=":url/" />
                 </Body>
             </BrowserRouter>
