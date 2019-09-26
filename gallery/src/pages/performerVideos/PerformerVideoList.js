@@ -9,9 +9,10 @@ export default (props) => {
     const [performerVideoList, dispatch] = useReducer(PerformerListReducer, []);
 
     const modelName = props.match.params.pid;
+    const privacy = props.match.params.privacy;
 
     const getList = async () => {
-        const { data } = await axios.get('/en/gallery/' + modelName + '/video-folder-content/public')
+        const { data } = await axios.get('/en/gallery/' + modelName + '/video-folder-content/' + privacy + '/')
         console.log(modelName)
         console.log(data)
 

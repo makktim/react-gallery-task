@@ -25,8 +25,11 @@ export default (props) => {
     const renderPerformerAlbum = (performerAlbum, index) => {
 
         const modelName = props.match.params.pid;
+
+        const privacy = performerAlbum.privacy;
+
         return (
-            <PerformerAlbum key={index} performerAlbum={performerAlbum} modelName={modelName} />
+            <PerformerAlbum key={index} performerAlbum={performerAlbum} modelName={modelName} privacy={privacy} />
         )
     };
 

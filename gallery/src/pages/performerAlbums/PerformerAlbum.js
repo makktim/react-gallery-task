@@ -6,8 +6,9 @@ import { GalleryImage, Img, ImgBox, Caption, PrivateTransparentBox, PublicTransp
 
 export default (props) => {
 
-    const { performerAlbum: { previewImageUrl, privacy, id, title, type } } = props;
+    const { performerAlbum: { previewImageUrl, id, title, type } } = props;
     const { modelName } = props;
+    const {privacy} = props;
 
 
 
@@ -50,7 +51,6 @@ export default (props) => {
                     <GalleryImage>
                         <ImgBox>
                             <Link to={'/en/gallery/' + modelName + '/video-folder-content/' + privacy + '/'}>
-                                <LockImg src={lock} alt=""/>
                                 <Img src={previewImageUrl} alt=""/>
                                 <PrivateTransparentBox>
                                     <Caption>

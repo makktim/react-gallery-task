@@ -24,8 +24,7 @@ class App extends Component {
                     <Route path='/gallery' component={PerformerList} />
                     <Route path="/en/gallery/:pid/folders" component={PerformerAlbumList} />
                     <Route path="/en/gallery/:pid/image-folder-content/:id/" component={PerformerImageList} />
-                    <Route path="/en/gallery/:pid/video-folder-content/public/" component={PerformerVideoList} />
-                    <Route path="/en/gallery/:pid/video-folder-content/exclusive/" component={PerformerVideoList} />
+                    <Route path="/en/gallery/:pid/video-folder-content/:privacy/" component={PerformerVideoList} />
                     <Route path=":url/" />
                 </Body>
             </BrowserRouter>

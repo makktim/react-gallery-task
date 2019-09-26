@@ -91,3 +91,13 @@ export const LockImg = styled.img`
     transform: translate(-50%, -50%);
     margin:15px;
 `;
+
+export const Button = styled.button`
+    position: absolute;
+    background: darkred;
+    color: beige;
+    width: 100%;
+    bottom: 0;
+    border: 1px solid darkred;
+    padding: 15px;
+`;
