@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
 let dialogStyles = {
-    width: '500px',
     maxWidth: '100%',
-    margint: '0 auto',
+    margin: '0 auto',
     position: 'fixed',
     left: '50%',
     top: '50%',
@@ -18,7 +17,7 @@ let dialogStyles = {
 
 
 let dialogCloseButtonStyle = {
-    margintBottom: '15px',
+    marginBottom: '15px',
     padding: '3px 8px',
     cursor: 'pointer',
     borderRadius: '50%',
