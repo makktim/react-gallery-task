@@ -4,36 +4,77 @@ import {fetchData} from "../../modules/ui/ApiService";
 import getApiData from "../../modules/ui/Sagas"
 import Performer from "./Performer";
 import PerformerListReducer, {SET_LIST} from '../../modules/reducers/PerformerListReducer';
-import connect from "react-redux/lib/connect/connect";
+import {bindActionCreators, combineReducers} from "redux";
+import {receiveApiData, requestApiData} from "../../modules/ui/Actions";
+import store from "../../modules/ui/Store";
+import {Provider, useSelector} from "react-redux";
 
 
+import { connect } from 'react-redux';
 
-function PerformerList(props) {
-
-    // fetchData().then(data => this.props.performer(data));
-
-    const renderPerformer = (performer, index) => {
-        return (
-
-            <Performer key={index} performer={performer}/>
-        )
-    };
+const PerformerList = (props) => {
+    // const data = useSelector((state) => state);
+    const { data } = props;
+    console.log(props);
 
     return (
-
-        <div>
-            {PerformerList.length > 0 && PerformerList.map(renderPerformer)}
-        </div>
-    )
-}
-
-const mapStateToProps = function(state) {
-    return {
-        performers: state.performer
-    }
+        <ul>
+            {data.map((data) => (
+                <li key={data.id}>
+                    <span>{data.pid}</span>
+                </li>
+            ))}
+        </ul>
+    );
 };
 
-export default connect(mapStateToProps, {fetchData})(PerformerList);
+const mapStateToProps = (state) => ({
+    data: state.data
+});
+
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({ requestApiData }, dispatch);
+
+
+export default connect(mapStateToProps, {combineReducers })(PerformerList);
+
+// export default (props) => {
+//
+//     console.log(props);
+//
+//     // fetchData().then(data => this.props.performer(data));
+//
+//     const renderPerformer = (performer, index) => {
+//         return (
+//
+//             <Performer key={index} performer={performer}/>
+//         )
+//
+//     };
+//
+//     return (
+//         <div>
+//             {fetchData.length > 0 && fetchData.map(renderPerformer)}
+//         </div>
+//     )
+//
+//
+// }
+
+// const mapStateToProps = function(state) {
+//     return {
+//         // performers: state.performer
+//     }
+// };
+
+
+// const mapStateToProps = state => ({ performer: state.performer });
+//
+// const mapDispatchToProps = dispatch =>
+//     bindActionCreators({ requestApiData }, dispatch);
+//
+// export default connect(null, null)(PerformerList);
+
 
 
 

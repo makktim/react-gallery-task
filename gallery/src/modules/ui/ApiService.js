@@ -9,7 +9,9 @@ export const fetchData = async () => {
     try {
         const response = await fetch('/en/list-page-ajax/show-more-json/0/');
         const data = await response.json();
-        return data.data.content.performers
+        console.log("api");
+        console.log(data);
+        return data
     } catch (e) {
         console.log(e);
     }

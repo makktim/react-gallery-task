@@ -6,6 +6,8 @@ import styled from "styled-components";
 import PerformerAlbumList from "./pages/performerAlbums/PerformerAlbumList";
 import PerformerImageList from "./pages/performerImages/PerformerImageList";
 import PerformerVideoList from "./pages/performerVideos/PerformerVideoList";
+import {Provider} from "react-redux";
+import store from "./modules/ui/Store";
 
 
 const Body = styled.div`
@@ -18,6 +20,7 @@ const Body = styled.div`
 class App extends Component {
     render() {
         return (
+            <Provider store={store}>
             <BrowserRouter>
                 <Body>
                     <NavBar />
@@ -29,6 +32,7 @@ class App extends Component {
                     <Route path=":url/" />
                 </Body>
             </BrowserRouter>
+            </Provider>
         );
     }
 

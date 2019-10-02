@@ -15,6 +15,7 @@ function* getApiData(action) {
 }
 
 export default function* mySaga() {
+    console.log("saga");
     console.log(fetchData())
     yield takeLatest(REQUEST_API_DATA, getApiData);
 }
