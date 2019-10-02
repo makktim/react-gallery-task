@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {vidRef} from 'react';
 import play from '../images/Play.png';
 import pause from '../images/Pause.png';
 import {playVideo, pauseVideo, getTime} from "./VideoPlay";
@@ -23,24 +23,24 @@ class Video extends React.Component {
         super();
         this.state = {
             isOpen: false,
-            autoplay: true,
             playIndex: 0,
             width: 0,
             queueLength: 1,
             isPlaying: false,
             progressCount: 0,
-            progressIndex: 0,
-            randomOn: false,
-            show: false
+            progressIndex: 0
         };
         // this.handleVideoClick = this.handleVideoClick.bind(this);
     }
 
-    onAutoPlay = () => {
-        let autoplay = this.refs.vidRef.autoplay;
-        this.setState({autoplay: true})
-        // console.log(currentTime)
-    };
+    // const [isOpen, setOpen] = useState(false);
+    // const [playIndex, setPlayIndex] = useState(0);
+    // const [width, setWidth] = useState(0);
+    // const [queueLength, setLength] = useState(1);
+    // const [isPlaying, setPlaying] = useState(false);
+    // const [progressCount, setProgressCount] = useState(0);
+    // const [progressIndex, setProgressIndex] = useState(0);
+
 
 
     onTimeUpdate = () => {
@@ -98,9 +98,10 @@ class Video extends React.Component {
                 <Modal isOpen={this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}>
                     <Player>
                         <PlayerVideo id="play" autoPlay ref="vidRef"
+
                                      poster={this.props.performerImage.previewImageUrl}
                                      src={this.props.performerImage.url}
-                                     onTimeUpdate={this.onTimeUpdate}
+                                     onTimeUpdate={this.onTimeUpdate }
                                      onDurationChange={this.onDurationChange}
                         />
                         <PlayerControls>

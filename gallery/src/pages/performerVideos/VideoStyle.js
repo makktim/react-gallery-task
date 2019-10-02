@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const PlayButton = styled.button`
+
+    export const PlayButton = styled.button`
     position: absolute;
     background-color:rgba(51, 0, 0, 0.6);
     color: beige;
@@ -18,7 +19,7 @@ export const PlayButton = styled.button`
         padding: 20px 45px;
 `;
 
-export const Player = styled.div`
+    export const Player = styled.div`
     max-width: 750px;
     border: 5px solid rgba(0,0,0,0.2);
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
@@ -29,7 +30,7 @@ export const Player = styled.div`
 `;
 
 
-export const PlayerVideo = styled.video`
+    export const PlayerVideo = styled.video`
  width: 100%;
      margin: 10px;
     border: 1px solid darkred;
@@ -43,7 +44,7 @@ export const PlayerVideo = styled.video`
         background-color:rgba(0, 0, 0, 0.5);
 `;
 
-export const PlayerControls = styled.div`
+    export const PlayerControls = styled.div`
     display: flex;
     position: absolute;
     bottom: 0;
@@ -61,7 +62,7 @@ export const PlayerControls = styled.div`
     
 `;
 
-export const Progress = styled.div`
+    export const Progress = styled.div`
     flex: 10;
     position: relative;
     display: flex;
@@ -77,7 +78,7 @@ export const Progress = styled.div`
     
 `;
 
-export const PlayerButton = styled.img`
+    export const PlayerButton = styled.img`
     background: none;
     border: 0;
     line-height: 1;
@@ -90,7 +91,7 @@ export const PlayerButton = styled.img`
     
 `;
 
-export const ProgressFilled = styled.div`
+    export const ProgressFilled = styled.div`
     width: 50%;
     background: burlywood;
     flex: 0;
@@ -98,13 +99,13 @@ export const ProgressFilled = styled.div`
     
 `;
 
-export const PlayerSlider = styled.div`
+    export const PlayerSlider = styled.div`
      width: 10px;
     height: 30px;
     
 `;
 
-export const CurrentTime = styled.button`
+    export const CurrentTime = styled.button`
     color: white;
     background: transparent;
     border: none;

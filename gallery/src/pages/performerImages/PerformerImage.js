@@ -8,36 +8,37 @@ export default (props) => {
     const {performerImage: {previewImageUrl, url}} = props;
 
 
-    // const [isOpen, setModal] = useState(false);
-    //
-    //
-    // const openModal = () => {
-    //     // isOpen={useState(true)}
-    //     setModal(true);
-    //     console.log('hello');
-    //     console.log(isOpen);
-    //
-    // };
-    //
-    // const closeModal = () => {
-    //     isOpen(false);
-    //     console.log(isOpen);
-    // };
+    const [isOpen, setModal] = useState(false);
+
+
+    const openModal = (props) => {
+        // isOpen={useState(true)}
+        setModal(true);
+        console.log('hello');
+        console.log(isOpen);
+
+    };
+
+    const closeModal = () => {
+        isOpen(false);
+        console.log(isOpen);
+    };
 
     return (
         <GalleryImage>
 
             <ImgBox>
-                {/*<button onClick={openModal.bind(this)}>PLAY</button>*/}
-                {/*<Img src={previewImageUrl} alt=""/>*/}
-
+                {/*value={greeting} onChange={handleChange}*/}
+                <button onClick={openModal.bind(this)}>PLAY</button>
+                <Img src={previewImageUrl} alt=""/>
+                <Modal isOpen={openModal.bind(this)} onClose={(e) => useState(false)}>
                 {/*<Modal isOpen={useState(true)} onClose={(e) => useState(false)}>*/}
                     <Img src={previewImageUrl} alt=""/>
                     <PublicTransparentBox>
                         <Caption>
                         </Caption>
                     </PublicTransparentBox>
-                {/*</Modal>*/}
+                </Modal>
             </ImgBox>
 
         </GalleryImage>
