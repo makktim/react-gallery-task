@@ -7,6 +7,7 @@ export default (props) => {
 
     const {performer: {profilePictureUrl, pid, id}} = props;
 
+
     if (id !== "promotion") {
         return (
             <GalleryImage>

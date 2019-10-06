@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import axios from 'axios';
-import PerformerListReducer, { SET_LIST } from "../../modules/reducers/PerformerListReducer";
+import PerformerListReducer, { SET_LIST } from "../PerformerListReducer";
 import PerformerAlbum from "./PerformerAlbum";
 
 

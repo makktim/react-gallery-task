@@ -1,42 +1,69 @@
-import React, {useEffect, useReducer} from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
-import {fetchData} from "../../modules/ui/ApiService";
-import getApiData from "../../modules/ui/Sagas"
-import Performer from "./Performer";
-import PerformerListReducer, {SET_LIST} from '../../modules/reducers/PerformerListReducer';
-import {bindActionCreators, combineReducers} from "redux";
-import {receiveApiData, requestApiData} from "../../modules/ui/Actions";
-import store from "../../modules/ui/Store";
-import {Provider, useSelector} from "react-redux";
-
-
+import {Caption, GalleryImage, Img, ImgBox, PublicTransparentBox} from "../style";
+import {Link} from "react-router-dom";
 import { connect } from 'react-redux';
 
-const PerformerList = (props) => {
-    // const data = useSelector((state) => state);
-    const { data } = props;
-    console.log(props);
+class PerformerList extends Component {
 
-    return (
-        <ul>
-            {data.map((data) => (
-                <li key={data.id}>
-                    <span>{data.pid}</span>
-                </li>
-            ))}
-        </ul>
-    );
-};
+    state = {
+        performers: []
+    }
 
-const mapStateToProps = (state) => ({
-    data: state.data
+    componentDidMount() {
+        axios.get('/en/list-page-ajax/show-more-json/0/')
+            .then(res => {
+                console.log(res)
+                this.setState({'performers': res.data.data.content.performers})
+            })
+    }
+
+    render() {
+        const {performers} = this.state;
+        const performerList = performers.length ? (
+            performers.map(performer => {
+                return (
+                        <GalleryImage>
+                            <ImgBox>
+                                <Link to={'/en/gallery/' + performer.pid + '/folders'}>
+                                    <Img key={performer.pid} src={performer.profilePictureUrl} alt=""/>
+                                    <PublicTransparentBox>
+                                        <Caption>
+                                            <p>{performer.pid}</p>
+                                        </Caption>
+                                    </PublicTransparentBox>
+                                </Link>
+                            </ImgBox>
+                        </GalleryImage>
+                )
+            })
+        ) : (
+            <div>
+                <p>No Models</p>
+            </div>
+        );
+        return (
+            <body>
+                <div>
+                    {performerList}
+                </div>
+            </body>
+        );
+    }
+
+}
+
+const mapStateToProps = ({ isLoading, performers, error }) => ({
+    isLoading,
+    performers,
+    error,
 });
 
-const mapDispatchToProps = dispatch =>
-    bindActionCreators({ requestApiData }, dispatch);
-
-
-export default connect(mapStateToProps, {combineReducers })(PerformerList);
+export default connect(
+    mapStateToProps,
+    null
+)
+(PerformerList);
 
 // export default (props) => {
 //
@@ -61,6 +88,23 @@ export default connect(mapStateToProps, {combineReducers })(PerformerList);
 //
 // }
 
+//     const data = useSelector((props) => props);
+//     // const { data } = props;
+//     console.log(fetchData());
+//     console.log(data);
+//
+//
+//     return (
+//         <ul>
+//             {data.map((data) => (
+//                 <li key={data.id}>
+//                     <span>{data.pid}</span>
+//                 </li>
+//             ))}
+//         </ul>
+//     );
+// };
+
 // const mapStateToProps = function(state) {
 //     return {
 //         // performers: state.performer
@@ -76,31 +120,29 @@ export default connect(mapStateToProps, {combineReducers })(PerformerList);
 // export default connect(null, null)(PerformerList);
 
 
-
-
 // export default ()  => {
 //
 //     const [performerList, mapDispatchToProps] = useReducer(PerformerListReducer, []);
 
 
-    // const getList = async () => {
-    //     const {data} = await axios.get('/en/list-page-ajax/show-more-json/0/')
+// const getList = async () => {
+//     const {data} = await axios.get('/en/list-page-ajax/show-more-json/0/')
 
-        // dispatch({
-        //     type: SET_LIST,
-        //     list: data.data.content.performers
-        // });
-    // }
+// dispatch({
+//     type: SET_LIST,
+//     list: data.data.content.performers
+// });
+// }
 
-    //
-    // useEffect(() => {
-    //     fetchData()
-    //     console.log(fetchData())
-    //     export default connect(
-    //         mapStateToProps,
-    //         mapDispatchToProps
-    //     )(PerformerList)
-    // }, []);
+//
+// useEffect(() => {
+//     fetchData()
+//     console.log(fetchData())
+//     export default connect(
+//         mapStateToProps,
+//         mapDispatchToProps
+//     )(PerformerList)
+// }, []);
 
 //     const renderPerformer = (performer, index) => {
 //         return (
