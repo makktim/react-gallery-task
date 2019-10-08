@@ -14,7 +14,6 @@ import {
     CurrentTime
 } from './VideoStyle';
 import {GalleryImage, Img, ImgBox, Caption, PublicTransparentBox, Button} from '../style';
-import {Link} from "react-router-dom";
 
 
 class Video extends React.Component {
@@ -30,24 +29,12 @@ class Video extends React.Component {
             progressCount: 0,
             progressIndex: 0
         };
-        // this.handleVideoClick = this.handleVideoClick.bind(this);
     }
-
-    // const [isOpen, setOpen] = useState(false);
-    // const [playIndex, setPlayIndex] = useState(0);
-    // const [width, setWidth] = useState(0);
-    // const [queueLength, setLength] = useState(1);
-    // const [isPlaying, setPlaying] = useState(false);
-    // const [progressCount, setProgressCount] = useState(0);
-    // const [progressIndex, setProgressIndex] = useState(0);
-
-
 
     onTimeUpdate = () => {
         let currentTime = this.refs.vidRef.currentTime;
         currentTime = getTime(Math.floor(currentTime));
         this.setState({progressIndex: currentTime})
-        // console.log(currentTime)
     };
 
     onDurationChange = () => {
@@ -80,14 +67,11 @@ class Video extends React.Component {
 
 
     render() {
-
-
         return (
 
             <GalleryImage>
 
                     <PlayerVideo id="play" ref="vidRef"
-                        // onClick={this.handleVideoClick}
                                  poster={this.props.performerImage.previewImageUrl} src={this.props.performerImage.url}
                                  onTimeUpdate={this.onTimeUpdate}
                                  onDurationChange={this.onDurationChange}
@@ -117,11 +101,6 @@ class Video extends React.Component {
 
                             </div>
                             <CurrentTime>{this.state.progressIndex}/{this.state.progressCount} </CurrentTime>
-                            {/*<input type="range" name="volume" className="player__slider" min="0" max="1" step="0.05"*/}
-                            {/*       value="1"/>*/}
-                            {/*<input type="range" name="playbackRate" className="PlayerSlider" min="0.5" max="2"*/}
-                            {/*       step="0.1"*/}
-                            {/*       value="1"/>*/}
                         </PlayerControls>
                     </Player>
 

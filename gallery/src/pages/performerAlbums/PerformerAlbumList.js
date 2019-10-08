@@ -1,44 +1,97 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { Component, useEffect, useReducer } from 'react';
 import axios from 'axios';
 import PerformerListReducer, { SET_LIST } from "../PerformerListReducer";
 import PerformerAlbum from "./PerformerAlbum";
+import {loadImages} from "../../actions";
+import {connect} from "react-redux";
+import {Caption, GalleryImage, Img, ImgBox, PrivateTransparentBox, PublicTransparentBox} from "../style";
+import {Link} from "react-router-dom";
+import {loadPerformerAlbums} from "../../actions/PerformerAlbumsActions";
 
 
-export default (props) => {
-    const [performerAlbumList, fetchData] = useReducer(PerformerListReducer, []);
-    // const modelName = props.match.params.pid;
-    //
-    // const getList = async () => {
-    //     const { data } = await axios.get('/en/gallery/' + modelName + '/folders');
-    //
-    //     dispatch({
-    //         type: SET_LIST,
-    //         list: data.data
-    //     });
-    // };
-    //
-    // useEffect(() => {
-    //     getList();
-    //
-    // }, []);
+class PerformerAlbumList extends Component {
 
-    const renderPerformerAlbum = (performerAlbum, index) => {
+    componentDidMount() {
+        this.props.loadPerformerAlbums(this.props);
+    }
 
-        const modelName = props.match.params.pid;
-
-        const privacy = performerAlbum.privacy;
-
+    render() {
+        const {performerAlbums} = this.props;
+        const modelName = this.props.match.params.pid;
+        const {privacy} =  this.props;
+        console.log(performerAlbums)
+        const performerAlbumList = performerAlbums.length ? (
+            performerAlbums.map(performerAlbum => {
+                return (
+                    <GalleryImage>
+                        <ImgBox>
+                            <Link to={'/en/gallery/' + modelName + '/video-folder-content/' + privacy + '/'}>
+                                <Img src={performerAlbum.previewImageUrl} alt=""/>
+                                <PrivateTransparentBox>
+                                    <Caption>
+                                        <p>{performerAlbum.title}</p>
+                                    </Caption>
+                                </PrivateTransparentBox>
+                            </Link>
+                        </ImgBox>
+                    </GalleryImage>
+                )
+            })
+        ) : (
+            <div>
+                <p>No Models</p>
+            </div>
+        );
         return (
-            <PerformerAlbum key={index} performerAlbum={performerAlbum} modelName={modelName} privacy={privacy} />
-        )
-    };
+            <body>
+            <div>
+                {performerAlbumList}
+            </div>
+            </body>
+        );
+    }
 
-    return (
-        <div>
-            {performerAlbumList.length > 0 && performerAlbumList.map(renderPerformerAlbum)}
-        </div>
-    )
+}
+
+const mapStateToProps = ({ isLoading, performerAlbums, error }) => ({
+    isLoading,
+    performerAlbums,
+    error,
+});
+
+const mapDispatchToProps = dispatch => ({
+    loadPerformerAlbums: (props) => dispatch(loadPerformerAlbums(props)),
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)
+(PerformerAlbumList);
 
 
-};
+
+// export default (props) => {
+//
+//
+//
+//     const renderPerformerAlbum = (performerAlbum, index) => {
+//
+//         const modelName = props.match.params.pid;
+//
+//         const privacy = performerAlbum.privacy;
+//
+//         return (
+//             <PerformerAlbum key={index} performerAlbum={performerAlbum} modelName={modelName} privacy={privacy} />
+//         )
+//     };
+//
+//     return (
+//         <div>
+//             {performerAlbumList.length > 0 && performerAlbumList.map(renderPerformerAlbum)}
+//         </div>
+//     )
+//
+//
+// };
 
