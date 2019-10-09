@@ -1,4 +1,4 @@
-import { PERFORMERS } from '../constans';
+import {PERFORMERS} from '../constans';
 
 
 const loadImages = () => ({
@@ -14,7 +14,6 @@ const setError = error => ({
     type: PERFORMERS.LOAD_FAILED,
     error,
 });
-
 
 
 export {loadImages, setImages, setError}

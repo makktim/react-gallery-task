@@ -1,4 +1,4 @@
-import { PERFORMERIMAGES } from '../constans';
+import {PERFORMERIMAGES} from '../constans';
 
 
 const loadPerformerImages = (props) => ({
@@ -11,11 +11,10 @@ const setPerformerImages = performerImages => ({
     performerImages,
 });
 
-const setPerformerImagessError = error => ({
+const setPerformerImagesError = error => ({
     type: PERFORMERIMAGES.LOAD_FAILED,
     error,
 });
 
 
-
-export {loadPerformerImages, setPerformerImages, setPerformerImagessError}
+export {loadPerformerImages, setPerformerImages, setPerformerImagesError}

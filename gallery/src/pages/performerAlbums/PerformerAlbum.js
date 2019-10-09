@@ -1,15 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import lock from "../images/229652.png";
-import { GalleryImage, Img, ImgBox, Caption, PrivateTransparentBox, PublicTransparentBox, LockImg } from '../style';
+import {GalleryImage, Img, ImgBox, Caption, PrivateTransparentBox, PublicTransparentBox, LockImg} from '../style';
 
 
 export default (props) => {
 
-    const { performerAlbum: { previewImageUrl, id, title, type } } = props;
-    const { modelName } = props;
+    const {performerAlbum: {previewImageUrl, id, title, type}} = props;
+    const {modelName} = props;
     const {privacy} = props;
-
 
 
     if (privacy === "exclusive") {
@@ -45,37 +44,37 @@ export default (props) => {
             )
         }
     }
-        if (privacy === "public") {
-            if (type === "video") {
-                return (
-                    <GalleryImage>
-                        <ImgBox>
-                            <Link to={'/en/gallery/' + modelName + '/video-folder-content/' + privacy + '/'}>
-                                <Img src={previewImageUrl} alt=""/>
-                                <PrivateTransparentBox>
-                                    <Caption>
-                                        <p>video</p>
-                                    </Caption>
-                                </PrivateTransparentBox>
-                            </Link>
-                        </ImgBox>
-                    </GalleryImage>
-                )
-            } else {
-                return (
-                    <GalleryImage>
-                        <ImgBox>
-                            <Link to={'/en/gallery/' + modelName + '/image-folder-content/' + id + "/"}>
-                                <Img src={previewImageUrl} alt=""/>
-                                <PublicTransparentBox>
-                                    <Caption>
-                                        <p>{title}</p>
-                                    </Caption>
-                                </PublicTransparentBox>
-                            </Link>
-                        </ImgBox>
-                    </GalleryImage>
-                )
-            }
+    if (privacy === "public") {
+        if (type === "video") {
+            return (
+                <GalleryImage>
+                    <ImgBox>
+                        <Link to={'/en/gallery/' + modelName + '/video-folder-content/' + privacy + '/'}>
+                            <Img src={previewImageUrl} alt=""/>
+                            <PrivateTransparentBox>
+                                <Caption>
+                                    <p>video</p>
+                                </Caption>
+                            </PrivateTransparentBox>
+                        </Link>
+                    </ImgBox>
+                </GalleryImage>
+            )
+        } else {
+            return (
+                <GalleryImage>
+                    <ImgBox>
+                        <Link to={'/en/gallery/' + modelName + '/image-folder-content/' + id + "/"}>
+                            <Img src={previewImageUrl} alt=""/>
+                            <PublicTransparentBox>
+                                <Caption>
+                                    <p>{title}</p>
+                                </Caption>
+                            </PublicTransparentBox>
+                        </Link>
+                    </ImgBox>
+                </GalleryImage>
+            )
         }
+    }
 };

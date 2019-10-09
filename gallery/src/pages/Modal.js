@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 let dialogStyles = {
     maxWidth: '100%',
@@ -50,4 +50,5 @@ class Modal extends Component {
         )
     }
 }
+
 export default Modal;

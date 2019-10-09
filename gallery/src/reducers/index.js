@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import {combineReducers} from "redux";
 
 import LoadingReducer from "./LoadingReducer";
 import performersReducer from "./PerformersReducer";

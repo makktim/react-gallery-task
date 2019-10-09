@@ -1,7 +1,6 @@
-import React, {vidRef} from 'react';
+import React from 'react';
 import play from '../images/Play.png';
 import pause from '../images/Pause.png';
-import {playVideo, pauseVideo, getTime} from "./VideoPlay";
 import Modal from '../Modal';
 import {
     PlayButton,
@@ -15,6 +14,11 @@ import {
 } from './VideoStyle';
 import {GalleryImage, Img, ImgBox, Caption, PublicTransparentBox, Button} from '../style';
 
+let getTime = (time) => {
+    let minutes = time < 60 ? 0 : Math.floor(time / 60);
+    let seconds = Math.floor(time - (minutes * 60)) * .01;
+    return (minutes + seconds).toFixed(2);
+};
 
 class Video extends React.Component {
 
@@ -31,6 +35,18 @@ class Video extends React.Component {
         };
     }
 
+    playVideo() {
+        this.refs.vidRef.play();
+        console.log(this.state.id)
+        console.log(this.refs.vidref);
+    }
+
+    pauseVideo() {
+        this.refs.vidRef.pause();
+        console.log(this.refs);
+    }
+
+
     onTimeUpdate = () => {
         let currentTime = this.refs.vidRef.currentTime;
         currentTime = getTime(Math.floor(currentTime));
@@ -44,39 +60,17 @@ class Video extends React.Component {
         this.setState({progressIndex: 0})
     };
 
-    // onshowProgress = () => {
-    //     // a video szélessége osztva a video idejével  másodpercben és az eredmény a másodpercenkénti pixelek száma. Ezután a videó pixelhelyzetét növelem másodpercenként a kapott értékkel.
-    //     let startPoint = this.refs.vidRef.clientWidth;
-    //     let width = this.refs.vidRef.clientWidth;
-    //     let clientWidth = this.refs.vidRef.clientWidth;
-    //     // let showTime = (startPoint / width) * duration;
-    //     this.setState({width: clientWidth});
-    //     console.log(clientWidth)
-    // };
-
-    // handleVideoClick() {
-    //     // let clientWidth = this.refs.vidRef.clientWidth;
-    //     // let duration = this.refs.vidRef.duration;
-    //
-    //     // this.setState({width: clientWidth});
-    //     this.setState({isOpen: true});
-    //     console.log('hello');
-    //     // console.log(clientWidth / duration)
-    //
-    // }
-
-
     render() {
         return (
 
             <GalleryImage>
 
-                    <PlayerVideo id="play" ref="vidRef"
-                                 poster={this.props.performerImage.previewImageUrl} src={this.props.performerImage.url}
-                                 onTimeUpdate={this.onTimeUpdate}
-                                 onDurationChange={this.onDurationChange}
-                    />
-                    <PlayButton onClick={(e) => this.setState({isOpen: true})}>PLAY</PlayButton>
+                <PlayerVideo id="play" ref="vidRef"
+                             poster={this.props.performerImage.previewImageUrl} src={this.props.performerImage.url}
+                             onTimeUpdate={this.onTimeUpdate}
+                             onDurationChange={this.onDurationChange}
+                />
+                <PlayButton onClick={(e) => this.setState({isOpen: true})}>PLAY</PlayButton>
 
 
                 <Modal isOpen={this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}>
@@ -85,7 +79,7 @@ class Video extends React.Component {
 
                                      poster={this.props.performerImage.previewImageUrl}
                                      src={this.props.performerImage.url}
-                                     onTimeUpdate={this.onTimeUpdate }
+                                     onTimeUpdate={this.onTimeUpdate}
                                      onDurationChange={this.onDurationChange}
                         />
                         <PlayerControls>
@@ -94,10 +88,10 @@ class Video extends React.Component {
                             </Progress>
                             <div className="ply-btn">
                                 <PlayerButton id='playButton' title="Toggle Play" src={play}
-                                              onClick={playVideo.bind(this)}
+                                              onClick={this.playVideo.bind(this)}
                                               alt=""/>
                                 <PlayerButton id='pauseButton' title="Toggle Pause" src={pause}
-                                              onClick={pauseVideo.bind(this)} alt=""/>
+                                              onClick={this.pauseVideo.bind(this)} alt=""/>
 
                             </div>
                             <CurrentTime>{this.state.progressIndex}/{this.state.progressCount} </CurrentTime>

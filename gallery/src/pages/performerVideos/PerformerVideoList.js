@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, Component } from 'react';
+import React, {Component} from 'react';
 import {Caption, GalleryImage, Img, ImgBox, PublicTransparentBox} from "../style";
 import {loadPerformerVideos} from "../../actions/PerformerVideosAction";
 import {connect} from "react-redux";
@@ -69,7 +69,7 @@ class PerformerVideoList extends Component {
 
                                              poster={performerVideo.previewImageUrl}
                                              src={performerVideo.url}
-                                             onTimeUpdate={this.onTimeUpdate }
+                                             onTimeUpdate={this.onTimeUpdate}
                                              onDurationChange={this.onDurationChange}
                                 />
                                 <PlayerControls>
@@ -109,7 +109,7 @@ class PerformerVideoList extends Component {
 
 }
 
-const mapStateToProps = ({ isLoading, performerVideos, error }) => ({
+const mapStateToProps = ({isLoading, performerVideos, error}) => ({
     isLoading,
     performerVideos,
     error,
@@ -124,26 +124,3 @@ export default connect(
     mapDispatchToProps
 )
 (PerformerVideoList);
-
-
-// export default (props) => {
-//
-//     console.log(props);
-//     const [performerVideoList, fetchData] = useReducer(PerformerListReducer, []);
-//
-//
-//     const renderPerformerVideo = (performerVideo, index) => {
-//
-//         return (
-//             <PerformerVideo key={index} performerImage={performerVideo} />
-//         )
-//     };
-//
-//     return (
-//         <div>
-//             {performerVideoList.length > 0 && performerVideoList.map(renderPerformerVideo)}
-//         </div>
-//     )
-//
-//
-// };

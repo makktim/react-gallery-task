@@ -1,9 +1,9 @@
-import { PERFORMERS } from "../constans";
+import {PERFORMERS} from "../constans";
 
 
-const performersReducer = (state = [], action) =>{
-    if(action.type === PERFORMERS.LOAD_SUCCESS){
-        return [ ...state, ...action.performers];
+const performersReducer = (state = [], action) => {
+    if (action.type === PERFORMERS.LOAD_SUCCESS) {
+        return [...state, ...action.performers];
     }
     return state;
 };

@@ -1,4 +1,4 @@
-import { PERFORMERVIDEOS } from '../constans';
+import {PERFORMERVIDEOS} from '../constans';
 
 
 const loadPerformerVideos = (props) => ({
@@ -15,7 +15,6 @@ const setPerformerVideosError = error => ({
     type: PERFORMERVIDEOS.LOAD_FAILED,
     error,
 });
-
 
 
 export {loadPerformerVideos, setPerformerVideos, setPerformerVideosError}

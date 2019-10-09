@@ -1,13 +1,18 @@
-import PerformerListReducer, { SET_LIST } from "../PerformerListReducer";
-import React, { useEffect, useReducer, Component } from 'react';
-import axios from "axios";
-import PerformerImage from "./PerformerImage";
+import React, {useEffect, useReducer, Component} from 'react';
 import {Caption, GalleryImage, Img, ImgBox, PrivateTransparentBox, PublicTransparentBox} from "../style";
-import {Link} from "react-router-dom";
 import {loadPerformerImages} from "../../actions/PerformerImagesAction";
 import {connect} from "react-redux";
+import Modal from "../Modal";
+import {PlayButton} from "../performerVideos/VideoStyle";
 
 class PerformerImageList extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpen: false
+        };
+    }
 
     componentDidMount() {
         this.props.loadPerformerImages(this.props);
@@ -21,9 +26,10 @@ class PerformerImageList extends Component {
                 return (
                     <GalleryImage>
                         <ImgBox>
-                            <Img src={performerImage.previewImageUrl} alt=""/>
+                            <Img key={performerImage.id} src={performerImage.previewImageUrl} alt=""/>
                             <PublicTransparentBox>
                                 <Caption>
+                                    <p>{performerImage.title}</p>
                                 </Caption>
                             </PublicTransparentBox>
                         </ImgBox>
@@ -46,7 +52,7 @@ class PerformerImageList extends Component {
 
 }
 
-const mapStateToProps = ({ isLoading, performerImages, error }) => ({
+const mapStateToProps = ({isLoading, performerImages, error}) => ({
     isLoading,
     performerImages,
     error,
@@ -61,42 +67,3 @@ export default connect(
     mapDispatchToProps
 )
 (PerformerImageList);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export default (props) => {
-//
-//     console.log(props);
-//     const [performerImageList, fetchData] = useReducer(PerformerListReducer, []);
-//
-//
-//     const renderPerformerImage = (performerImage, index) => {
-//         return (
-//             <PerformerImage key={index} performerImage={performerImage} />
-//         )
-//     };
-//
-//     return (
-//         <div>
-//             {performerImageList.length > 0 && performerImageList.map(renderPerformerImage)}
-//         </div>
-//     )
-//
-//
-// };

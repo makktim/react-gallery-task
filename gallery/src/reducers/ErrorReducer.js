@@ -1,8 +1,8 @@
-import { PERFORMERS } from "../constans";
+import {PERFORMERS} from "../constans";
 
 
-const ErrorReducer = (state = null, action) =>{
-    switch(action.type){
+const ErrorReducer = (state = null, action) => {
+    switch (action.type) {
         case PERFORMERS.LOAD_FAILED:
             return action.error;
         case PERFORMERS.LOAD:

@@ -1,8 +1,4 @@
-import React, { Component, useEffect, useReducer } from 'react';
-import axios from 'axios';
-import PerformerListReducer, { SET_LIST } from "../PerformerListReducer";
-import PerformerAlbum from "./PerformerAlbum";
-import {loadImages} from "../../actions";
+import React, {Component, useEffect, useReducer} from 'react';
 import {connect} from "react-redux";
 import {Caption, GalleryImage, Img, ImgBox, LockImg, PrivateTransparentBox, PublicTransparentBox} from "../style";
 import {Link} from "react-router-dom";
@@ -27,7 +23,8 @@ class PerformerAlbumList extends Component {
                         return (
                             <GalleryImage>
                                 <ImgBox>
-                                    <Link to={'/en/gallery/' + modelName + '/video-folder-content/' + performerAlbum.privacy + '/'}>
+                                    <Link
+                                        to={'/en/gallery/' + modelName + '/video-folder-content/' + performerAlbum.privacy + '/'}>
                                         <LockImg src={lock} alt=""/>
                                         <Img src={performerAlbum.previewImageUrl} alt=""/>
                                         <PrivateTransparentBox>
@@ -60,7 +57,8 @@ class PerformerAlbumList extends Component {
                         return (
                             <GalleryImage>
                                 <ImgBox>
-                                    <Link to={'/en/gallery/' + modelName + '/video-folder-content/' + performerAlbum.privacy + '/'}>
+                                    <Link
+                                        to={'/en/gallery/' + modelName + '/video-folder-content/' + performerAlbum.privacy + '/'}>
                                         <Img src={performerAlbum.previewImageUrl} alt=""/>
                                         <PrivateTransparentBox>
                                             <Caption>
@@ -75,7 +73,8 @@ class PerformerAlbumList extends Component {
                         return (
                             <GalleryImage>
                                 <ImgBox>
-                                    <Link to={'/en/gallery/' + modelName + '/image-folder-content/' + performerAlbum.id + "/"}>
+                                    <Link
+                                        to={'/en/gallery/' + modelName + '/image-folder-content/' + performerAlbum.id + "/"}>
                                         <Img src={performerAlbum.previewImageUrl} alt=""/>
                                         <PublicTransparentBox>
                                             <Caption>
@@ -105,7 +104,7 @@ class PerformerAlbumList extends Component {
 
 }
 
-const mapStateToProps = ({ isLoading, performerAlbums, error }) => ({
+const mapStateToProps = ({isLoading, performerAlbums, error}) => ({
     isLoading,
     performerAlbums,
     error,
@@ -120,30 +119,3 @@ export default connect(
     mapDispatchToProps
 )
 (PerformerAlbumList);
-
-
-
-// export default (props) => {
-//
-//
-//
-//     const renderPerformerAlbum = (performerAlbum, index) => {
-//
-//         const modelName = props.match.params.pid;
-//
-//         const privacy = performerAlbum.privacy;
-//
-//         return (
-//             <PerformerAlbum key={index} performerAlbum={performerAlbum} modelName={modelName} privacy={privacy} />
-//         )
-//     };
-//
-//     return (
-//         <div>
-//             {performerAlbumList.length > 0 && performerAlbumList.map(renderPerformerAlbum)}
-//         </div>
-//     )
-//
-//
-// };
-

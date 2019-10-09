@@ -1,4 +1,4 @@
-import { PERFORMERALBUMS } from '../constans';
+import {PERFORMERALBUMS} from '../constans';
 
 
 const loadPerformerAlbums = (props) => ({
@@ -15,7 +15,6 @@ const setPerformerAlbumsError = error => ({
     type: PERFORMERALBUMS.LOAD_FAILED,
     error,
 });
-
 
 
 export {loadPerformerAlbums, setPerformerAlbums, setPerformerAlbumsError}
