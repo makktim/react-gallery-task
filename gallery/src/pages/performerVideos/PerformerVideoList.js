@@ -1,9 +1,5 @@
-import PerformerListReducer, { SET_LIST } from "../PerformerListReducer";
 import React, { useEffect, useReducer, Component } from 'react';
-import axios from "axios";
-import PerformerVideo from "./PerformerVideo";
 import {Caption, GalleryImage, Img, ImgBox, PublicTransparentBox} from "../style";
-import {Link} from "react-router-dom";
 import {loadPerformerVideos} from "../../actions/PerformerVideosAction";
 import {connect} from "react-redux";
 import {
@@ -46,7 +42,7 @@ class PerformerVideoList extends Component {
     onDurationChange = () => {
         let duration = this.refs.vidRef.duration;
         duration = getTime(Math.floor(duration));
-        this.setState({progressCount: duration})
+        this.setState({progressCount: duration});
         this.setState({progressIndex: 0})
     };
 
@@ -61,15 +57,12 @@ class PerformerVideoList extends Component {
             performerVideos.map(performerVideo => {
                 return (
                     <GalleryImage>
-
                         <PlayerVideo id="play" ref="vidRef"
                                      poster={performerVideo.previewImageUrl} src={performerVideo.url}
                                      onTimeUpdate={this.onTimeUpdate}
                                      onDurationChange={this.onDurationChange}
                         />
                         <PlayButton onClick={(e) => this.setState({isOpen: true})}>PLAY</PlayButton>
-
-
                         <Modal isOpen={this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}>
                             <Player>
                                 <PlayerVideo id="play" autoPlay ref="vidRef"

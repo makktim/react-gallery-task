@@ -13,7 +13,7 @@ const rootreducer = combineReducers({
     performers: performersReducer,
     performerAlbums: AlbumReducer,
     performerImages: ImagesReducer,
-    PerformerVideos: VideoReducer,
+    performerVideos: VideoReducer,
     error: ErrorReducer,
 });
 

@@ -6,9 +6,9 @@ const loadPerformerVideos = (props) => ({
     props,
 });
 
-const setPerformerVideos = performerImages => ({
+const setPerformerVideos = performerVideos => ({
     type: PERFORMERVIDEOS.LOAD_SUCCESS,
-    performerImages,
+    performerVideos,
 });
 
 const setPerformerVideosError = error => ({

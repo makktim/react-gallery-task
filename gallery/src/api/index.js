@@ -13,9 +13,6 @@ const fetchPerformers = async () => {
 
 
 const fetchPerformerAlbums = async (performerName, performerId) => {
-    console.log("api")
-    console.log(performerName)
-    console.log(performerId)
     const response = await fetch('/en/gallery/' + performerName + '/folders');
     const res = await response.json();
     console.log(res);
@@ -27,7 +24,6 @@ const fetchPerformerAlbums = async (performerName, performerId) => {
 };
 
 const fetchPerformerAlbumImages = async (performerName,performerId ) => {
-    console.log(performerId)
     const response = await fetch('/en/gallery/' + performerName + '/image-folder-content/' + performerId);
     const res = await response.json();
     console.log(res);
@@ -39,6 +35,7 @@ const fetchPerformerAlbumImages = async (performerName,performerId ) => {
 };
 
 const fetchPerformerVideos = async (performerName, privacy) => {
+    console.log("video")
     const response = await fetch('/en/gallery/' + performerName + '/video-folder-content/' + privacy + '/');
     const res = await response.json();
     console.log(res);

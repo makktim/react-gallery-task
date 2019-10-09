@@ -57,7 +57,7 @@ function* handlePerformersVideosLoad(props) {
     try{
         console.log(props);
         const performerName = props.props.match.params.pid;
-        const privacy = props.match.params.privacy;
+        const privacy = props.props.match.params.privacy;
         const performerVideos = yield call(fetchPerformerVideos, performerName, privacy);
         console.log(performerVideos);
         yield put((setPerformerVideos(performerVideos.data)));

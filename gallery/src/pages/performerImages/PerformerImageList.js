@@ -22,7 +22,6 @@ class PerformerImageList extends Component {
                     <GalleryImage>
                         <ImgBox>
                             <Img src={performerImage.previewImageUrl} alt=""/>
-                            <Img src={performerImage.previewImageUrl} alt=""/>
                             <PublicTransparentBox>
                                 <Caption>
                                 </Caption>
