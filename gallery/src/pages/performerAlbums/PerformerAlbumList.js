@@ -18,14 +18,13 @@ class PerformerAlbumList extends Component {
     render() {
         const {performerAlbums} = this.props;
         const modelName = this.props.match.params.pid;
-        const {privacy} =  this.props;
-        console.log(performerAlbums)
+        console.log("performeralbum:", this.props.performerAlbums)
         const performerAlbumList = performerAlbums.length ? (
             performerAlbums.map(performerAlbum => {
                 return (
                     <GalleryImage>
                         <ImgBox>
-                            <Link to={'/en/gallery/' + modelName + '/video-folder-content/' + privacy + '/'}>
+                            <Link to={'/en/gallery/' + modelName + '/image-folder-content/' + performerAlbum.id + "/"}>
                                 <Img src={performerAlbum.previewImageUrl} alt=""/>
                                 <PrivateTransparentBox>
                                     <Caption>

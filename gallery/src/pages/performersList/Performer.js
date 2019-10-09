@@ -5,7 +5,7 @@ import {GalleryImage, Img, ImgBox, Caption, PublicTransparentBox} from '../style
 
 export default (props) => {
 
-    const {performer: {profilePictureUrl, pid, id}} = props;
+    const {performers: {profilePictureUrl, pid, id}} = props;
 
 
     if (id !== "promotion") {

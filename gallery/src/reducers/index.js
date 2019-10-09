@@ -1,14 +1,19 @@
 import { combineReducers } from "redux";
 
 import LoadingReducer from "./LoadingReducer";
-import ImagesReducer from "./ImagesReducer";
+import performersReducer from "./PerformersReducer";
 import ErrorReducer from "./ErrorReducer";
 import AlbumReducer from "./AlbumReducer";
+import ImagesReducer from "./ImagesReducer";
+import VideoReducer from "./VideoReducer";
+
 
 const rootreducer = combineReducers({
     isLoading: LoadingReducer,
-    performers: ImagesReducer,
+    performers: performersReducer,
     performerAlbums: AlbumReducer,
+    performerImages: ImagesReducer,
+    PerformerVideos: VideoReducer,
     error: ErrorReducer,
 });
 

@@ -1,11 +1,11 @@
-import { PERFORMERS } from "../constans";
+import { PERFORMERIMAGES } from "../constans";
 
 
-const imagesReducer = (state = [], action) =>{
-    if(action.type === PERFORMERS.LOAD_SUCCESS){
-        return [ ...state, ...action.performers];
+const ImagesReducer = (state = [], action) =>{
+    if(action.type === PERFORMERIMAGES.LOAD_SUCCESS){
+        return [ ...state, ...action.performerImages];
     }
     return state;
 };
 
-export default imagesReducer;
+export default ImagesReducer;
