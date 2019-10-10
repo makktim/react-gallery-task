@@ -14,8 +14,15 @@ import {
 } from "./VideoStyle";
 import Modal from "../Modal";
 import play from "../images/Play.png";
-import {getTime, pauseVideo, playVideo} from "./VideoPlay";
+// import {getTime, pauseVideo, playVideo} from "./VideoPlay";
 import pause from "../images/Pause.png";
+
+
+let getTime = (time) => {
+    let minutes = time < 60 ? 0 : Math.floor(time / 60);
+    let seconds = Math.floor(time - (minutes * 60)) * .01;
+    return (minutes + seconds).toFixed(2);
+};
 
 
 class PerformerVideoList extends Component {
@@ -29,8 +36,19 @@ class PerformerVideoList extends Component {
             queueLength: 1,
             isPlaying: false,
             progressCount: 0,
-            progressIndex: 0
+            progressIndex: 0,
+            performerVideo: null
         };
+    }
+
+    playVideo =() => {
+        this.refs.vidRef.play();
+        console.log(this.refs);
+    }
+
+    pauseVideo = (index) => {
+        this.refs.vidRef.pause();
+        console.log(this.refs);
     }
 
     onTimeUpdate = () => {
@@ -46,6 +64,7 @@ class PerformerVideoList extends Component {
         this.setState({progressIndex: 0})
     };
 
+
     componentDidMount() {
         this.props.loadPerformerVideos(this.props)
     }
@@ -53,42 +72,20 @@ class PerformerVideoList extends Component {
 
     render() {
         const {performerVideos} = this.props;
+        console.log(performerVideos);
         const performerVideoList = performerVideos.length ? (
-            performerVideos.map(performerVideo => {
+            performerVideos.map((performerVideo, index) => {
                 return (
                     <GalleryImage>
-                        <PlayerVideo id="play" ref="vidRef"
+                        <PlayerVideo key={index} id="play" ref="vidRef"
                                      poster={performerVideo.previewImageUrl} src={performerVideo.url}
                                      onTimeUpdate={this.onTimeUpdate}
                                      onDurationChange={this.onDurationChange}
                         />
-                        <PlayButton onClick={(e) => this.setState({isOpen: true})}>PLAY</PlayButton>
-                        <Modal isOpen={this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}>
-                            <Player>
-                                <PlayerVideo id="play" autoPlay ref="vidRef"
-
-                                             poster={performerVideo.previewImageUrl}
-                                             src={performerVideo.url}
-                                             onTimeUpdate={this.onTimeUpdate}
-                                             onDurationChange={this.onDurationChange}
-                                />
-                                <PlayerControls>
-                                    <Progress>
-                                        <ProgressFilled/>
-                                    </Progress>
-                                    <div className="ply-btn">
-                                        <PlayerButton id='playButton' title="Toggle Play" src={play}
-                                                      onClick={playVideo.bind(this)}
-                                                      alt=""/>
-                                        <PlayerButton id='pauseButton' title="Toggle Pause" src={pause}
-                                                      onClick={pauseVideo.bind(this)} alt=""/>
-
-                                    </div>
-                                    <CurrentTime>{this.state.progressIndex}/{this.state.progressCount} </CurrentTime>
-                                </PlayerControls>
-                            </Player>
-
-                        </Modal>
+                        <PlayButton onClick={(e) => {
+                            this.setState({performerVideo: performerVideo});
+                            this.setState({isOpen: true})
+                        }}>PLAY</PlayButton>
                     </GalleryImage>
 
                 )
@@ -102,6 +99,35 @@ class PerformerVideoList extends Component {
             <body>
             <div>
                 {performerVideoList}
+                { this.state.performerVideo ? (
+                <Modal isOpen={this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}>
+                    <Player>
+                        <PlayerVideo id="play" ref="vidRef"
+
+                                     poster={this.state.performerVideo.previewImageUrl}
+                                     src={this.state.performerVideo.url}
+                                     onTimeUpdate={this.onTimeUpdate}
+                                     onDurationChange={this.onDurationChange}
+                        />
+                        <PlayerControls>
+                            <Progress>
+                                <ProgressFilled/>
+                            </Progress>
+                            <div className="ply-btn">
+                                <PlayerButton id='playButton' title="Toggle Play" src={play}
+                                              onClick={this.playVideo.bind(this)}
+                                              alt=""/>
+                                <PlayerButton id='pauseButton' title="Toggle Pause" src={pause}
+                                              onClick={this.pauseVideo.bind(this)} alt=""/>
+
+                            </div>
+                            <CurrentTime>{this.state.progressIndex}/{this.state.progressCount} </CurrentTime>
+                        </PlayerControls>
+                    </Player>
+
+                </Modal>
+                ) :
+                <div></div> }
             </div>
             </body>
         );
