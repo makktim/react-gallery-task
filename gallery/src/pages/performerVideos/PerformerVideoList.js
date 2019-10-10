@@ -18,7 +18,7 @@ import play from "../images/Play.png";
 import pause from "../images/Pause.png";
 
 
-let getTime = (time) => {
+const getTime = (time) => {
     let minutes = time < 60 ? 0 : Math.floor(time / 60);
     let seconds = Math.floor(time - (minutes * 60)) * .01;
     return (minutes + seconds).toFixed(2);

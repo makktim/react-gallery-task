@@ -5,14 +5,13 @@ import App from './App';
 import {Provider} from 'react-redux';
 
 import configureStore from "./store";
+import styled from "styled-components";
 
 const store = configureStore();
 
 
 ReactDOM.render((
     <Provider store={store}>
-        <Fragment>
-            <App/>
-        </Fragment>
+            <App />
     </Provider>
 ), document.getElementById('root'));

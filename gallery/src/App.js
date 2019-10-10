@@ -11,7 +11,7 @@ import PerformerVideoList from "./pages/performerVideos/PerformerVideoList";
 const Body = styled.div`
     padding: 0px;
     margin: 0px;
-    background-color: burlywood;
+    background-color: #a74b3b;
 `;
 
 

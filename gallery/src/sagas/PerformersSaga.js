@@ -8,7 +8,6 @@ import {setPerformerVideos, setPerformerVideosError} from "../actions/PerformerV
 
 
 function* handlePerformersLoad() {
-    console.log("performers");
     try {
         const performers = yield call(fetchPerformers);
         yield put((setImages(performers.data.content.performers)));

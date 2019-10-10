@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 
-let dialogStyles = {
+const dialogStyles = {
     maxWidth: '100%',
+    height: 'auto',
     margin: '0 auto',
     position: 'fixed',
     left: '50%',
@@ -16,7 +17,8 @@ let dialogStyles = {
 };
 
 
-let dialogCloseButtonStyle = {
+
+const dialogCloseButtonStyle = {
     marginBottom: '15px',
     padding: '3px 8px',
     cursor: 'pointer',

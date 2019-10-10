@@ -21,10 +21,10 @@ const NavBarStyle = styled.nav`
     color: beige;
     overflow: hidden;
     text-decoration: none;
-    float: right;
     margin: 5px;
     padding: 15px;
     cursor: pointer;
+    float: right;
 
         &:hover{
           background-color: beige;

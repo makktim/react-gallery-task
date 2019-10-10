@@ -4,9 +4,9 @@ import styled from "styled-components";
 export const GalleryImage = styled.div`
     display: flex;
     justify-content: center;
-    width: auto;
+    width: 100%;
     position: relative;
-    height: auto;
+    height: 100%;
     transition: transform 0.4s ease;
     
     @media(min-width: 700px){
@@ -100,4 +100,25 @@ export const Button = styled.button`
     bottom: 0;
     border: 1px solid darkred;
     padding: 15px;
+`;
+
+export const ModalImg = styled.div`
+    border: 1px solid darkred;
+    width: 400px;
+    height: auto;
+    object-fit: cover;
+    position: relative;
+    cursor: pointer;
+        
+
+`;
+
+export const ShowButton = styled.button`
+    background-color:rgba(51, 0, 0, 0.6);
+    border: 1px solid darkred;
+    color: beige;   
+    box-shadow: 0 0 4px 3px black;
+    
+        &:hover{
+        background-color:rgba(0, 0, 0, 0.5);
 `;
