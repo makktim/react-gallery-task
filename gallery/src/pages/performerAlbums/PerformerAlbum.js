@@ -6,19 +6,18 @@ import {GalleryImage, Img, ImgBox, Caption, PrivateTransparentBox, PublicTranspa
 
 export default (props) => {
 
-    const {performerAlbum: {previewImageUrl, id, title, type}} = props;
+    const {performerAlbum: {previewImageUrl, id, title, type, index,privacy}} = props;
     const {modelName} = props;
-    const {privacy} = props;
-
 
     if (privacy === "exclusive") {
         if (type === "video") {
             return (
-                <GalleryImage>
+                <GalleryImage key={index}>
                     <ImgBox>
-                        <Link to={'/en/gallery/' + modelName + '/video-folder-content/' + privacy + '/'}>
+                        <Link
+                            to={'/en/gallery/' + modelName + '/video-folder-content/' + privacy + '/'}>
                             <LockImg src={lock} alt=""/>
-                            <Img src={previewImageUrl} alt=""/>
+                            <Img key={index} src={previewImageUrl} alt=""/>
                             <PrivateTransparentBox>
                                 <Caption>
                                     <p>video</p>
@@ -30,7 +29,7 @@ export default (props) => {
             )
         } else {
             return (
-                <GalleryImage>
+                <GalleryImage key={index}>
                     <ImgBox>
                         <LockImg src={lock} alt=""/>
                         <Img src={previewImageUrl} alt=""/>
@@ -47,24 +46,25 @@ export default (props) => {
     if (privacy === "public") {
         if (type === "video") {
             return (
-                <GalleryImage>
+                <GalleryImage key={index}>
                     <ImgBox>
                         <Link to={'/en/gallery/' + modelName + '/video-folder-content/' + privacy + '/'}>
                             <Img src={previewImageUrl} alt=""/>
-                            <PrivateTransparentBox>
+                            <PublicTransparentBox>
                                 <Caption>
                                     <p>video</p>
                                 </Caption>
-                            </PrivateTransparentBox>
+                            </PublicTransparentBox>
                         </Link>
                     </ImgBox>
                 </GalleryImage>
             )
         } else {
             return (
-                <GalleryImage>
+                <GalleryImage key={index}>
                     <ImgBox>
-                        <Link to={'/en/gallery/' + modelName + '/image-folder-content/' + id + "/"}>
+                        <Link
+                            to={'/en/gallery/' + modelName + '/image-folder-content/' + id + "/"}>
                             <Img src={previewImageUrl} alt=""/>
                             <PublicTransparentBox>
                                 <Caption>

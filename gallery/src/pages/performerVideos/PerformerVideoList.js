@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Caption, GalleryImage, Img, ImgBox, PublicTransparentBox} from "../style";
+import {GalleryImage} from "../style";
 import {loadPerformerVideos} from "../../actions/PerformerVideosAction";
 import {connect} from "react-redux";
 import {
@@ -14,7 +14,6 @@ import {
 } from "./VideoStyle";
 import Modal from "../Modal";
 import play from "../images/Play.png";
-// import {getTime, pauseVideo, playVideo} from "./VideoPlay";
 import pause from "../images/Pause.png";
 
 
@@ -37,19 +36,38 @@ class PerformerVideoList extends Component {
             isPlaying: false,
             progressCount: 0,
             progressIndex: 0,
-            performerVideo: null
+            performerVideo: null,
+            progress: 0,
+            volume: 1,
+            setMuted: false
         };
+
+        // this.changeVolume = this.changeVolume.bind(this);
     }
+
+    changeVolume = (steps) => {
+        let volume = this.refs.vidRef.volume;
+        this.setState({volume: this.state.volume + steps});
+        console.log(this.state.volume);
+        console.log(volume)
+        // return () => {
+        //     let volume = this.refs.vidRef.volume;
+        //     this.setState({volume: volume + steps});
+        //     console.log(volume)
+        // };
+    };
+
+
 
     playVideo =() => {
         this.refs.vidRef.play();
         console.log(this.refs);
-    }
+    };
 
-    pauseVideo = (index) => {
+    pauseVideo = () => {
         this.refs.vidRef.pause();
         console.log(this.refs);
-    }
+    };
 
     onTimeUpdate = () => {
         let currentTime = this.refs.vidRef.currentTime;
@@ -62,7 +80,16 @@ class PerformerVideoList extends Component {
         duration = getTime(Math.floor(duration));
         this.setState({progressCount: duration});
         this.setState({progressIndex: 0})
+
     };
+
+    onCurrentTime =() => {
+        let progressTime = this.state.progressIndex / this.state.progressCount;
+        progressTime = progressTime * 100;
+        //
+        // console.log(progressTime)
+    };
+
 
 
     componentDidMount() {
@@ -72,20 +99,23 @@ class PerformerVideoList extends Component {
 
     render() {
         const {performerVideos} = this.props;
-        console.log(performerVideos);
         const performerVideoList = performerVideos.length ? (
             performerVideos.map((performerVideo, index) => {
                 return (
-                    <GalleryImage>
+                    <GalleryImage key={index}>
                         <PlayerVideo key={index} id="play" ref="vidRef"
                                      poster={performerVideo.previewImageUrl} src={performerVideo.url}
                                      onTimeUpdate={this.onTimeUpdate}
+                                     volume={this.state.volume}
+                                     changeVolume={this.changeVolume}
                                      onDurationChange={this.onDurationChange}
+
                         />
                         <PlayButton onClick={(e) => {
                             this.setState({performerVideo: performerVideo});
                             this.setState({isOpen: true})
                         }}>PLAY</PlayButton>
+
                     </GalleryImage>
 
                 )
@@ -96,22 +126,24 @@ class PerformerVideoList extends Component {
             </div>
         );
         return (
-            <body>
             <div>
                 {performerVideoList}
                 { this.state.performerVideo ? (
                 <Modal isOpen={this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}>
                     <Player>
-                        <PlayerVideo id="play" ref="vidRef"
+                        <PlayerVideo id="play" autoPlay ref="vidRef"
 
                                      poster={this.state.performerVideo.previewImageUrl}
                                      src={this.state.performerVideo.url}
                                      onTimeUpdate={this.onTimeUpdate}
+                                     volume={this.state.volume}
+                                     changeVolume={this.changeVolume}
                                      onDurationChange={this.onDurationChange}
+
                         />
                         <PlayerControls>
                             <Progress>
-                                <ProgressFilled/>
+                                <ProgressFilled width={this.state.progress}/>
                             </Progress>
                             <div className="ply-btn">
                                 <PlayerButton id='playButton' title="Toggle Play" src={play}
@@ -122,6 +154,14 @@ class PerformerVideoList extends Component {
 
                             </div>
                             <CurrentTime>{this.state.progressIndex}/{this.state.progressCount} </CurrentTime>
+                            <div className="pb-3">
+                                <button onClick={(e) => {this.changeVolume(0.1)}} className="mr-3">
+                                    volume+=0.1
+                                </button>
+                                <button onClick={(e) => {this.changeVolume(-0.1)}} className="mr-3">
+                                    volume-=0.1
+                                </button>
+                            </div>
                         </PlayerControls>
                     </Player>
 
@@ -129,7 +169,6 @@ class PerformerVideoList extends Component {
                 ) :
                 <div></div> }
             </div>
-            </body>
         );
     }
 
@@ -148,5 +187,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)
-(PerformerVideoList);
+)(PerformerVideoList);

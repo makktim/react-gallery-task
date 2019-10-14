@@ -20,6 +20,7 @@ export const GalleryImage = styled.div`
 
 export const Img = styled.img`
     height: auto;
+    width: 100%;
     transition: transform 0.4s ease;
     
     &:hover{
@@ -51,7 +52,7 @@ export const Caption = styled.div`
     padding-left: 20px;
     
     >p{
-        color: wheat;;
+        color: wheat;
     }
 `;
 
@@ -103,8 +104,7 @@ export const Button = styled.button`
 `;
 
 export const ModalImg = styled.div`
-    border: 1px solid darkred;
-    width: 400px;
+    width: 100%;
     height: auto;
     object-fit: cover;
     position: relative;
@@ -113,9 +113,55 @@ export const ModalImg = styled.div`
 
 `;
 
+
+
+export const ArrowImg = styled.img`
+  cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 5px;
+    margin-left: 30px;
+    margin-top: -50px;
+    user-select: none;
+    border-radius: 50%;
+    background-color: #deb887db;
+    -webkit-user-select: none;
+
+`;
+
+ export const NextArrowImg = styled.img`
+   cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 5px;
+    margin-right: 35px;
+    margin-top: -50px;
+    border-radius: 50%;
+    user-select: none;
+    background-color: #deb887db;
+    -webkit-user-select: none;
+    right: 99%;
+
+`;
+
+export const OpenImg = styled.img`
+    height: auto;
+    max-height: 800px;
+    max-width: 600px;
+    width: 100%;
+    transition: transform 0.4s ease;
+   
+`;
+
 export const ShowButton = styled.button`
     background-color:rgba(51, 0, 0, 0.6);
     border: 1px solid darkred;
+    float: right;
+    margin-right: 10%;
+    margin-bottom: 5%;
+    right: 10%;
     color: beige;   
     box-shadow: 0 0 4px 3px black;
     

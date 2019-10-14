@@ -1,8 +1,12 @@
-import React, {useEffect, useReducer, Component} from 'react';
-import {Caption, GalleryImage, Img, ImgBox, ModalImg, PublicTransparentBox, ShowButton} from "../style";
+import React, {Component} from 'react';
+import {Caption, GalleryImage, Img, ImgBox, ModalImg, PublicTransparentBox, ShowButton, ArrowImg, OpenImg, NextArrowImg } from "../style";
 import {loadPerformerImages} from "../../actions/PerformerImagesAction";
 import {connect} from "react-redux";
 import Modal from "../Modal";
+import leftArrow from "../images/left_arrow.png";
+import rightArrow from "../images/right_arrow.png";
+import PerformerAlbum from "../performerAlbums/PerformerAlbum";
+import PerformerImage from "./PerformerImage";
 
 
 class PerformerImageList extends Component {
@@ -17,10 +21,9 @@ class PerformerImageList extends Component {
     }
 
     nextProperty = (performerImages) => {
-        console.log(performerImages)
+        console.log(performerImages);
         if (this.state.index < performerImages.length - 1) {
             this.setState({index: this.state.index + 1});
-            console.log(this.state.index);
         } else {
             this.setState({index: 0});
         }
@@ -40,15 +43,52 @@ class PerformerImageList extends Component {
         this.props.loadPerformerImages(this.props);
     }
 
+    // render() {
+    //     const {performerImages} = this.props;
+    //     const modelName = this.props.match.params.pid;
+    //
+    //     const renderPerformerImage = (performerImage, index) => {
+    //         return (
+    //         <div>
+    //             <PerformerImage key={index} performerImage={performerImage} modelName={modelName} isopen={this.state.isOpen}/>
+    //                 <ShowButton onClick={(e) => {
+    //                     this.setState({performerImage: performerImage});
+    //                     this.setState({isOpen: true});
+    //                     this.setState({index: index});
+    //                 }}>show</ShowButton>
+    //         </div>
+    //         )
+    //     };
+    //
+    //     return (
+    //         <div>
+    //             {performerImages.length > 0 && performerImages.map(renderPerformerImage)}
+    //             {this.state.performerImage ? (
+    //                     <Modal isOpen={this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}>
+    //                         {console.log(performerImages)}
+    //
+    //                         <ModalImg>
+    //                             <OpenImg key={this.state.performerImage.id}
+    //                                      src={performerImages[this.state.index].url} alt=""/>
+    //                             <NextArrowImg onClick={(e) => this.prevProperty(performerImages)} src={leftArrow}/>
+    //                             <ArrowImg onClick={(e) => this.nextProperty(performerImages)} src={rightArrow}/>
+    //                         </ModalImg>
+    //                     </Modal>
+    //                 ) :
+    //                 <div></div>}
+    //         </div>
+    //     )
+    // }
+
     render() {
         const {performerImages} = this.props;
         console.log(performerImages);
         const ImageList = performerImages.length ? (
             performerImages.map((performerImage, index) => {
                 return (
-                    <GalleryImage>
+                    <GalleryImage key={performerImage.id}>
                         <ImgBox>
-                            <Img key={performerImage.id} src={performerImage.previewImageUrl} alt=""/>
+                            <Img src={performerImage.previewImageUrl} alt=""/>
                             <PublicTransparentBox>
                                 <Caption>
 
@@ -57,8 +97,6 @@ class PerformerImageList extends Component {
                                             this.setState({performerImage: performerImage});
                                             this.setState({isOpen: true});
                                             this.setState({index: index});
-                                            console.log(index)
-                                            console.log(this.state.index)
                                         }}>show</ShowButton>
                                     </p>
                                 </Caption>
@@ -75,23 +113,22 @@ class PerformerImageList extends Component {
             </div>
         );
         return (
-            <body>
             <div>
                 {ImageList}
                 {this.state.performerImage ? (
                         <Modal isOpen={this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}>
-                            {console.log(performerImages)};
+                            {console.log(performerImages)}
+
                             <ModalImg>
-                                <Img key={this.state.performerImage.id}
-                                     src={performerImages[this.state.index].previewImageUrl} alt=""/>
-                                <button onClick={(e) => this.prevProperty(performerImages)}>Previous</button>
-                                <button onClick={(e) => this.nextProperty(performerImages)}>Next</button>
+                                <OpenImg key={this.state.performerImage.id}
+                                     src={performerImages[this.state.index].url} alt=""/>
+                                <NextArrowImg onClick={(e) => this.prevProperty(performerImages)} src={leftArrow}/>
+                                <ArrowImg onClick={(e) => this.nextProperty(performerImages)} src={rightArrow}/>
                             </ModalImg>
                         </Modal>
                     ) :
                     <div></div>}
             </div>
-            </body>
         );
     }
 
@@ -110,5 +147,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)
-(PerformerImageList);
+)(PerformerImageList);

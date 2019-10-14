@@ -1,18 +1,22 @@
-import React from 'react';
-import {GalleryImage, Img, ImgBox, Caption, PublicTransparentBox} from '../style';
+import React, {useState} from 'react';
+import {GalleryImage, Img, ImgBox, Caption, PublicTransparentBox, ShowButton} from '../style';
+import PerformerImageList from "./PerformerImageList";
 
 export default (props) => {
 
-    const {performerImage: {previewImageUrl}} = props;
+    const {performerImage: {previewImageUrl, id, title, index}} = props;
+
+    // const {performerImage} = props;
+    console.log(props);
 
     return (
-        <GalleryImage>
-
+        <GalleryImage key={id}>
             <ImgBox>
-                <Img src={previewImageUrl} alt=""/>
                 <Img src={previewImageUrl} alt=""/>
                 <PublicTransparentBox>
                     <Caption>
+                        <p>{title}
+                        </p>
                     </Caption>
                 </PublicTransparentBox>
             </ImgBox>
@@ -21,3 +25,4 @@ export default (props) => {
     )
 
 };
+

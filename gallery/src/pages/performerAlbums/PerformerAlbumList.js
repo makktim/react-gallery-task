@@ -1,9 +1,7 @@
-import React, {Component, useEffect, useReducer} from 'react';
+import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {Caption, GalleryImage, Img, ImgBox, LockImg, PrivateTransparentBox, PublicTransparentBox} from "../style";
-import {Link} from "react-router-dom";
 import {loadPerformerAlbums} from "../../actions/PerformerAlbumsActions";
-import lock from "../images/229652.png";
+import PerformerAlbum from "./PerformerAlbum";
 
 
 class PerformerAlbumList extends Component {
@@ -13,95 +11,22 @@ class PerformerAlbumList extends Component {
     }
 
     render() {
-        const {performerAlbums} = this.props;
-        const modelName = this.props.match.params.pid;
-        console.log("performeralbum:", this.props.performerAlbums)
-        const performerAlbumList = performerAlbums.length ? (
-            performerAlbums.map(performerAlbum => {
-                if (performerAlbum.privacy === "exclusive") {
-                    if (performerAlbum.type === "video") {
-                        return (
-                            <GalleryImage>
-                                <ImgBox>
-                                    <Link
-                                        to={'/en/gallery/' + modelName + '/video-folder-content/' + performerAlbum.privacy + '/'}>
-                                        <LockImg src={lock} alt=""/>
-                                        <Img src={performerAlbum.previewImageUrl} alt=""/>
-                                        <PrivateTransparentBox>
-                                            <Caption>
-                                                <p>video</p>
-                                            </Caption>
-                                        </PrivateTransparentBox>
-                                    </Link>
-                                </ImgBox>
-                            </GalleryImage>
-                        )
-                    } else {
-                        return (
-                            <GalleryImage>
-                                <ImgBox>
-                                    <LockImg src={lock} alt=""/>
-                                    <Img src={performerAlbum.previewImageUrl} alt=""/>
-                                    <PrivateTransparentBox>
-                                        <Caption>
-                                            <p>{performerAlbum.title}</p>
-                                        </Caption>
-                                    </PrivateTransparentBox>
-                                </ImgBox>
-                            </GalleryImage>
-                        )
-                    }
-                }
-                if (performerAlbum.privacy === "public") {
-                    if (performerAlbum.type === "video") {
-                        return (
-                            <GalleryImage>
-                                <ImgBox>
-                                    <Link
-                                        to={'/en/gallery/' + modelName + '/video-folder-content/' + performerAlbum.privacy + '/'}>
-                                        <Img src={performerAlbum.previewImageUrl} alt=""/>
-                                        <PrivateTransparentBox>
-                                            <Caption>
-                                                <p>video</p>
-                                            </Caption>
-                                        </PrivateTransparentBox>
-                                    </Link>
-                                </ImgBox>
-                            </GalleryImage>
-                        )
-                    } else {
-                        return (
-                            <GalleryImage>
-                                <ImgBox>
-                                    <Link
-                                        to={'/en/gallery/' + modelName + '/image-folder-content/' + performerAlbum.id + "/"}>
-                                        <Img src={performerAlbum.previewImageUrl} alt=""/>
-                                        <PublicTransparentBox>
-                                            <Caption>
-                                                <p>{performerAlbum.title}</p>
-                                            </Caption>
-                                        </PublicTransparentBox>
-                                    </Link>
-                                </ImgBox>
-                            </GalleryImage>
-                        )
-                    }
-                }
-            })
-        ) : (
-            <div>
-                <p>No Models</p>
-            </div>
-        );
-        return (
-            <body>
-            <div>
-                {performerAlbumList}
-            </div>
-            </body>
-        );
-    }
+            const {performerAlbums} = this.props;
+            const modelName = this.props.match.params.pid;
 
+        const renderPerformerAlbum = (performerAlbum, index) => {
+            return (
+
+                <PerformerAlbum key={index} performerAlbum={performerAlbum} modelName={modelName}/>
+            )
+        };
+
+        return (
+            <div>
+                {performerAlbums.length > 0 && performerAlbums.map(renderPerformerAlbum)}
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = ({isLoading, performerAlbums, error}) => ({
@@ -117,5 +42,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)
-(PerformerAlbumList);
+)(PerformerAlbumList);

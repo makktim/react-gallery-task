@@ -1,10 +1,35 @@
 import React, {Component} from 'react';
-import {Caption, GalleryImage, Img, ImgBox, PublicTransparentBox} from "../style";
-import {Link} from "react-router-dom";
+import Performer from "./Performer";
 import {connect} from 'react-redux';
 import {loadImages} from "../../actions";
 
 
+// function PerformerList(props) {
+//
+//     const performerList = props.loadImages();
+//
+//
+//     useEffect((props) => {
+//         console.log(performerList)
+//
+//     }, []);
+//
+//
+//
+//     const renderPerformer = (performer, index) => {
+//         return (
+//
+//             <Performer key={index} performer={performer}/>
+//         )
+//     };
+//
+//     return (
+//         <div>
+//             {performerList.length > 0 && performerList.map(renderPerformer)}
+//         </div>
+//     )
+//
+// }
 class PerformerList extends Component {
 
     componentDidMount() {
@@ -14,36 +39,18 @@ class PerformerList extends Component {
 
     render() {
         const {performers} = this.props;
-        const performerList = performers.length ? (
-            performers.map(performer => {
-                return (
-                    <GalleryImage>
-                        <ImgBox>
-                            <Link to={'/en/gallery/' + performer.pid + '/folders'} type="performerName">
-                                <Img key={performer.pid} src={performer.profilePictureUrl} alt=""/>
-                                <PublicTransparentBox>
-                                    <Caption>
-                                        <p>{performer.pid}</p>
-                                    </Caption>
-                                </PublicTransparentBox>
-                            </Link>
-                        </ImgBox>
-                    </GalleryImage>
-                )
-            })
-        ) : (
-            <div>
-                <p>No Models</p>
-            </div>
-        );
+        const renderPerformer = (performer, index) => {
         return (
-            <body>
-            <div>
-                {performerList}
-            </div>
-            </body>
-        );
-    }
+
+            <Performer key={index} performer={performer}/>
+        )
+    };
+
+    return (
+        <div>
+            {performers.length > 0 && performers.map(renderPerformer)}
+        </div>
+    )}
 
 }
 
@@ -60,6 +67,5 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)
-(PerformerList);
+)(PerformerList);
 

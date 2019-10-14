@@ -21,10 +21,10 @@ const NavBarStyle = styled.nav`
     color: beige;
     overflow: hidden;
     text-decoration: none;
-    margin: 5px;
     padding: 15px;
     cursor: pointer;
     float: right;
+    font-size:3em;
 
         &:hover{
           background-color: beige;
@@ -37,7 +37,8 @@ const NavBarStyle = styled.nav`
      }
 
            @media screen and (max-width: 768px) {
-                 margin 10px;
+               margin 10px;
+               margin-right: 35%;
   }
   }
 

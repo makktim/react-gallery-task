@@ -5,15 +5,15 @@ import {GalleryImage, Img, ImgBox, Caption, PublicTransparentBox} from '../style
 
 export default (props) => {
 
-    const {performers: {profilePictureUrl, pid, id}} = props;
+    const {performer: {profilePictureUrl, pid, id, index}} = props;
 
 
-    if (id !== "promotion") {
+    if (id !== "freePeeks") {
         return (
-            <GalleryImage>
+            <GalleryImage key={index}>
                 <ImgBox>
-                    <Link to={'/en/gallery/' + pid + '/folders'}>
-                        <Img src={profilePictureUrl} alt=""/>
+                    <Link to={'/en/gallery/' + pid + '/folders'} type="performerName">
+                        <Img key={pid} src={profilePictureUrl} alt=""/>
                         <PublicTransparentBox>
                             <Caption>
                                 <p>{pid}</p>
