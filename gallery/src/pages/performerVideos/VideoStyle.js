@@ -95,7 +95,7 @@ export const ProgressFilled = styled.div`
     width: 50%;
     background: burlywood;
     flex: 0;
-    flex-basis: ${({ width }) => width + '%'};
+    flex-basis: ${({ progress }) => progress + '%'};
     
 `;
 

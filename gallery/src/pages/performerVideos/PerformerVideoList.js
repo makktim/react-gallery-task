@@ -26,8 +26,8 @@ const getTime = (time) => {
 
 class PerformerVideoList extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             isOpen: false,
             playIndex: 0,
@@ -46,10 +46,12 @@ class PerformerVideoList extends Component {
     }
 
     changeVolume = (steps) => {
-        let volume = this.refs.vidRef.volume;
-        this.setState({volume: this.state.volume + steps});
-        console.log(this.state.volume);
-        console.log(volume)
+        const videoElement = this.refs.vidRef;
+        let newVolume = videoElement.volume + steps;
+
+        this.setState({volume: Math.max(Math.min(newVolume, 1), 0) }, ()=>{
+            videoElement.volume = this.state.volume;
+        } );
         // return () => {
         //     let volume = this.refs.vidRef.volume;
         //     this.setState({volume: volume + steps});
@@ -72,7 +74,8 @@ class PerformerVideoList extends Component {
     onTimeUpdate = () => {
         let currentTime = this.refs.vidRef.currentTime;
         currentTime = getTime(Math.floor(currentTime));
-        this.setState({progressIndex: currentTime})
+        this.setState({progressIndex: currentTime});
+        this.onCurrentTime();
     };
 
     onDurationChange = () => {
@@ -80,12 +83,13 @@ class PerformerVideoList extends Component {
         duration = getTime(Math.floor(duration));
         this.setState({progressCount: duration});
         this.setState({progressIndex: 0})
-
+        this.onCurrentTime();
     };
 
-    onCurrentTime =() => {
+    onCurrentTime = () => {
         let progressTime = this.state.progressIndex / this.state.progressCount;
-        progressTime = progressTime * 100;
+        progressTime = Math.round(progressTime * 100);
+        this.setState({width: progressTime})
         //
         // console.log(progressTime)
     };
@@ -136,14 +140,12 @@ class PerformerVideoList extends Component {
                                      poster={this.state.performerVideo.previewImageUrl}
                                      src={this.state.performerVideo.url}
                                      onTimeUpdate={this.onTimeUpdate}
-                                     volume={this.state.volume}
-                                     changeVolume={this.changeVolume}
                                      onDurationChange={this.onDurationChange}
 
                         />
                         <PlayerControls>
                             <Progress>
-                                <ProgressFilled width={this.state.progress}/>
+                                <ProgressFilled progress={this.state.width}/>
                             </Progress>
                             <div className="ply-btn">
                                 <PlayerButton id='playButton' title="Toggle Play" src={play}

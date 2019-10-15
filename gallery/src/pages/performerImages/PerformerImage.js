@@ -16,6 +16,11 @@ export default (props) => {
                 <PublicTransparentBox>
                     <Caption>
                         <p>{title}
+                            {/*<ShowButton onClick={(e) => {*/}
+                            {/*    this.setState({performerImage: performerImage});*/}
+                            {/*    this.setState({isOpen: true});*/}
+                            {/*    this.setState({index: index});*/}
+                            {/*}}>show</ShowButton>*/}
                         </p>
                     </Caption>
                 </PublicTransparentBox>
