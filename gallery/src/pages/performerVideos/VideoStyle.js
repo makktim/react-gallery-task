@@ -9,9 +9,9 @@ export const PlayButton = styled.button`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 50%;
     margin:15px;
     padding: 14px 40px;
-    border-radius: 50%;
     box-shadow: 0 0 9px 7px black;
     
         &:hover{
@@ -20,23 +20,14 @@ export const PlayButton = styled.button`
 `;
 
 export const Player = styled.div`
-    max-width: 750px;
-    border: 5px solid rgba(0,0,0,0.2);
+    max-width: 900px;
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
     position: relative;
     font-size: 0;
-    overflow: hidden;
-    
-        &:hover{
-            transform: translateY(0);
-        }
-    
 `;
 
-
 export const PlayerVideo = styled.video`
- width: 100%;
-     margin: 10px;
+    width: 100%;
     border: 1px solid darkred;
     box-shadow: 0 0 7px 4px black;
     position: relative;
@@ -105,17 +96,24 @@ export const ProgressFilled = styled.div`
     
 `;
 
-export const VolumeButton = styled.button`
-    background-color:rgba(51, 0, 0, 0.6);
-    border: 1px solid darkred;
-    color: beige;   
-    float:right;
-    box-shadow: 0 0 4px 3px black;
-    
-        &:hover{
-        background-color:rgba(0, 0, 0, 0.5);
-    
+export const VolumeRange =styled.input`
+  -webkit-appearance: none;
+  margin-top: 10%;
+  height: 15px;
+  border-radius: 5px;
+  background: burlywood;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  
+      &:hover{
+        opacity: 1;
+        }
+       
+
 `;
+
 
 export const CurrentTime = styled.button`
     color: white;

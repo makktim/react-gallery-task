@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import styled from 'styled-components';
 
 const NavBarStyle = styled.nav`
@@ -46,11 +46,11 @@ const NavBarStyle = styled.nav`
 
 
 const NavBar = () => {
-  return (
-    <NavBarStyle>
-      <Link to="/gallery" className="link">Gallery</Link>
-    </NavBarStyle>
+    return (
+        <NavBarStyle>
+            <Link to="/gallery" className="link">Gallery</Link>
+        </NavBarStyle>
 
-  )
+    )
 };
 export default NavBar;

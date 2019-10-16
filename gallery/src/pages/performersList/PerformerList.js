@@ -3,33 +3,6 @@ import Performer from "./Performer";
 import {connect} from 'react-redux';
 import {loadImages} from "../../actions";
 
-
-// function PerformerList(props) {
-//
-//     const performerList = props.loadImages();
-//
-//
-//     useEffect((props) => {
-//         console.log(performerList)
-//
-//     }, []);
-//
-//
-//
-//     const renderPerformer = (performer, index) => {
-//         return (
-//
-//             <Performer key={index} performer={performer}/>
-//         )
-//     };
-//
-//     return (
-//         <div>
-//             {performerList.length > 0 && performerList.map(renderPerformer)}
-//         </div>
-//     )
-//
-// }
 class PerformerList extends Component {
 
     componentDidMount() {
@@ -40,17 +13,18 @@ class PerformerList extends Component {
     render() {
         const {performers} = this.props;
         const renderPerformer = (performer, index) => {
+            return (
+
+                <Performer key={index} performer={performer}/>
+            )
+        };
+
         return (
-
-            <Performer key={index} performer={performer}/>
+            <div>
+                {performers.length > 0 && performers.map(renderPerformer)}
+            </div>
         )
-    };
-
-    return (
-        <div>
-            {performers.length > 0 && performers.map(renderPerformer)}
-        </div>
-    )}
+    }
 
 }
 

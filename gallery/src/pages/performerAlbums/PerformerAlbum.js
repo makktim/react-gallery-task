@@ -6,7 +6,7 @@ import {GalleryImage, Img, ImgBox, Caption, PrivateTransparentBox, PublicTranspa
 
 export default (props) => {
 
-    const {performerAlbum: {previewImageUrl, id, title, type, index,privacy}} = props;
+    const {performerAlbum: {previewImageUrl, id, title, type, index, privacy}} = props;
     const {modelName} = props;
 
     if (privacy === "exclusive") {

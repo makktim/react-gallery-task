@@ -12,7 +12,7 @@ import {
     ProgressFilled,
     CurrentTime
 } from './VideoStyle';
-import {GalleryImage, Img, ImgBox, Caption, PublicTransparentBox, Button} from '../style';
+import {GalleryImage} from '../style';
 
 let getTime = (time) => {
     let minutes = time < 60 ? 0 : Math.floor(time / 60);

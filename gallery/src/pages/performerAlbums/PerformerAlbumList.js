@@ -11,8 +11,8 @@ class PerformerAlbumList extends Component {
     }
 
     render() {
-            const {performerAlbums} = this.props;
-            const modelName = this.props.match.params.pid;
+        const {performerAlbums} = this.props;
+        const modelName = this.props.match.params.pid;
 
         const renderPerformerAlbum = (performerAlbum, index) => {
             return (
