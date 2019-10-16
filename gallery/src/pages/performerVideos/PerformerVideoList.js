@@ -10,11 +10,13 @@ import {
     PlayerControls,
     PlayerVideo,
     Progress,
+    VolumeButton,
     ProgressFilled
 } from "./VideoStyle";
-import Modal from "../Modal";
+import Modal from "../modal/Modal";
 import play from "../images/Play.png";
 import pause from "../images/Pause.png";
+import speaker from "../images/Speaker.png";
 
 
 const getTime = (time) => {
@@ -75,7 +77,7 @@ class PerformerVideoList extends Component {
         let currentTime = this.refs.vidRef.currentTime;
         currentTime = getTime(Math.floor(currentTime));
         this.setState({progressIndex: currentTime});
-        this.onCurrentTime();
+        this.onProgressCurrentTime();
     };
 
     onDurationChange = () => {
@@ -83,15 +85,13 @@ class PerformerVideoList extends Component {
         duration = getTime(Math.floor(duration));
         this.setState({progressCount: duration});
         this.setState({progressIndex: 0})
-        this.onCurrentTime();
+        this.onProgressCurrentTime();
     };
 
-    onCurrentTime = () => {
+    onProgressCurrentTime = () => {
         let progressTime = this.state.progressIndex / this.state.progressCount;
         progressTime = Math.round(progressTime * 100);
         this.setState({width: progressTime})
-        //
-        // console.log(progressTime)
     };
 
 
@@ -157,12 +157,20 @@ class PerformerVideoList extends Component {
                             </div>
                             <CurrentTime>{this.state.progressIndex}/{this.state.progressCount} </CurrentTime>
                             <div className="pb-3">
-                                <button onClick={(e) => {this.changeVolume(0.1)}} className="mr-3">
-                                    volume+=0.1
-                                </button>
-                                <button onClick={(e) => {this.changeVolume(-0.1)}} className="mr-3">
-                                    volume-=0.1
-                                </button>
+
+                                {/*<td>*/}
+                                {/*    <img src="Speaker.png" id="speaker"/>*/}
+                                {/*</td>*/}
+                                {/*<td>*/}
+                                {/*    <input type="range" id="volume" min="0" max="1" value="0.40" step="0.20"*/}
+                                {/*           onChange="changeVolume()"/>*/}
+                                {/*</td>*/}
+                                <VolumeButton onClick={(e) => {this.changeVolume(0.1)}} className="mr-3">
+                                    volume+
+                                </VolumeButton>
+                                <VolumeButton onClick={(e) => {this.changeVolume(-0.1)}} className="mr-3">
+                                    volume-
+                                </VolumeButton>
                             </div>
                         </PlayerControls>
                     </Player>

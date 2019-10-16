@@ -1,7 +1,7 @@
 import React from 'react';
 import play from '../images/Play.png';
 import pause from '../images/Pause.png';
-import Modal from '../Modal';
+import Modal from '../modal/Modal';
 import {
     PlayButton,
     Player,

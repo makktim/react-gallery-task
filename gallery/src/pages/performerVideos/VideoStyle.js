@@ -27,6 +27,10 @@ export const Player = styled.div`
     font-size: 0;
     overflow: hidden;
     
+        &:hover{
+            transform: translateY(0);
+        }
+    
 `;
 
 
@@ -35,13 +39,15 @@ export const PlayerVideo = styled.video`
      margin: 10px;
     border: 1px solid darkred;
     box-shadow: 0 0 7px 4px black;
-    overflow: hidden;
     position: relative;
     cursor: pointer;
     
     
     &:hover{
         background-color:rgba(0, 0, 0, 0.5);
+        transform: translateY(0);
+         }
+                    
 `;
 
 export const PlayerControls = styled.div`
@@ -99,9 +105,15 @@ export const ProgressFilled = styled.div`
     
 `;
 
-export const PlayerSlider = styled.div`
-     width: 10px;
-    height: 30px;
+export const VolumeButton = styled.button`
+    background-color:rgba(51, 0, 0, 0.6);
+    border: 1px solid darkred;
+    color: beige;   
+    float:right;
+    box-shadow: 0 0 4px 3px black;
+    
+        &:hover{
+        background-color:rgba(0, 0, 0, 0.5);
     
 `;
 

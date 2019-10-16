@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Caption, GalleryImage, Img, ImgBox, ModalImg, PublicTransparentBox, ShowButton, ArrowImg, OpenImg, NextArrowImg } from "../style";
 import {loadPerformerImages} from "../../actions/PerformerImagesAction";
 import {connect} from "react-redux";
-import Modal from "../Modal";
+import Modal from "../modal/Modal";
 import leftArrow from "../images/left_arrow.png";
 import rightArrow from "../images/right_arrow.png";
 import PerformerAlbum from "../performerAlbums/PerformerAlbum";
