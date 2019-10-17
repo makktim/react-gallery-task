@@ -16,6 +16,7 @@ import {connect} from "react-redux";
 import Modal from "../modal/Modal";
 import leftArrow from "../images/left_arrow.png";
 import rightArrow from "../images/right_arrow.png";
+import PerformerImage from "./PerformerImage";
 
 
 class PerformerImageList extends Component {
@@ -50,6 +51,11 @@ class PerformerImageList extends Component {
         this.setState({isOpen: false})
     };
 
+    onOpenModal = (index, performerImage) => {
+        this.setState({isOpen: true, index: index, performerImage: performerImage});
+    };
+
+
 
     componentDidMount() {
         this.props.loadPerformerImages(this.props);
@@ -57,40 +63,22 @@ class PerformerImageList extends Component {
 
     render() {
         const {performerImages} = this.props;
-        const ImageList = performerImages.length ? (
-            performerImages.map((performerImage, index) => {
-                return (
-                    <GalleryImage key={performerImage.id}>
-                        <ImgBox>
-                            <Img src={performerImage.previewImageUrl} alt=""/>
-                            <PublicTransparentBox>
-                                <Caption>
+        const modelName = this.props.match.params.pid;
 
-                                    <p>{performerImage.title}
-                                        <ShowButton onClick={(e) => {
-                                            this.setState({performerImage: performerImage});
-                                            this.setState({isOpen: true});
-                                            this.setState({index: index});
-                                        }}>show</ShowButton>
-                                    </p>
-                                </Caption>
-                            </PublicTransparentBox>
-                        </ImgBox>
+        const renderPerformerImage = (performerImage, index) => {
+            return (
+                <div key={index} >
+                    <PerformerImage key={index} performerImage={performerImage} modelName={modelName} index={index}
+                                    isopen={this.state.isOpen} onOpenModal={this.onOpenModal}/>
+                </div>
+            )
+        };
 
-
-                    </GalleryImage>
-                )
-            })
-        ) : (
-            <div>
-                <p>No Models</p>
-            </div>
-        );
         return (
             <div>
-                {ImageList}
+                {performerImages.length > 0 && performerImages.map(renderPerformerImage)}
                 {this.state.performerImage ? (
-                        <Modal isOpen={this.state.isOpen} onClose={this.onCloseModal}>
+                        <Modal isOpen={this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}>
                             <ModalImg>
                                 <OpenImg key={this.state.performerImage.id}
                                          src={performerImages[this.state.index].url} alt=""/>
@@ -101,11 +89,9 @@ class PerformerImageList extends Component {
                     ) :
                     <div></div>}
             </div>
-        );
+        )
     }
-
 }
-
 const mapStateToProps = ({isLoading, performerImages, error}) => ({
     isLoading,
     performerImages,

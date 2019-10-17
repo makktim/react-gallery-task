@@ -6,7 +6,7 @@ import {loadImages} from "../../actions";
 class PerformerList extends Component {
 
     componentDidMount() {
-        this.props.loadImages()
+        this.props.loadImages();
     }
 
 

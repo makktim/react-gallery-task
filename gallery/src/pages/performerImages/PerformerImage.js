@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {
     GalleryImage,
     Img,
@@ -18,7 +18,8 @@ import rightArrow from "../images/right_arrow.png";
 
 export default (props) => {
 
-    const {performerImage: {previewImageUrl, id, title, index}} = props;
+    const {performerImage: {previewImageUrl, id, title}, onOpenModal, index, performerImage} = props;
+
 
     return (
         <GalleryImage key={id}>
@@ -28,9 +29,7 @@ export default (props) => {
                     <Caption>
                         <p>{title}
                             <ShowButton onClick={(e) => {
-                                this.setState({performerImage: props});
-                                this.setState({isOpen: true});
-                                this.setState({index: index});
+                                onOpenModal(index, performerImage);
                             }}>show</ShowButton>
                         </p>
                     </Caption>
