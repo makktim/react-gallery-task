@@ -25,7 +25,7 @@ export const Img = styled.img`
     
     &:hover{
         transform: scale(1.1);
-        }
+    }
 `;
 
 export const ImgBox = styled.div`
@@ -36,11 +36,10 @@ export const ImgBox = styled.div`
     overflow: hidden;
     position: relative;
     cursor: pointer;
-    
-    
+   
     &:hover{
         background-color:rgba(0, 0, 0, 0.5);
-        
+    }
 
 `;
 
@@ -66,7 +65,7 @@ export const PublicTransparentBox = styled.div`
     
     &:hover{
         background-color:rgba(51, 0, 0, 0.5);
-        }
+    }
 `;
 
 export const PrivateTransparentBox = styled.div`
@@ -80,7 +79,7 @@ export const PrivateTransparentBox = styled.div`
     
     &:hover{
         background-color:rgba(51, 0, 0, 0.3);
-        }
+    }
 `;
 
 export const LockImg = styled.img`
@@ -109,14 +108,11 @@ export const ModalImg = styled.div`
     object-fit: cover;
     position: relative;
     cursor: pointer;
-        
-
 `;
 
 
-
 export const ArrowImg = styled.img`
-  cursor: pointer;
+    cursor: pointer;
     position: absolute;
     top: 50%;
     width: auto;
@@ -130,8 +126,8 @@ export const ArrowImg = styled.img`
 
 `;
 
- export const NextArrowImg = styled.img`
-   cursor: pointer;
+export const NextArrowImg = styled.img`
+    cursor: pointer;
     position: absolute;
     top: 50%;
     width: auto;
@@ -166,5 +162,6 @@ export const ShowButton = styled.button`
     box-shadow: 0 0 4px 3px black;
     
         &:hover{
-        background-color:rgba(0, 0, 0, 0.5);
+          background-color:rgba(0, 0, 0, 0.5);
+        }
 `;

@@ -46,6 +46,10 @@ class PerformerImageList extends Component {
         }
     };
 
+    onCloseModal = () => {
+        this.setState({isOpen: false})
+    };
+
 
     componentDidMount() {
         this.props.loadPerformerImages(this.props);
@@ -86,9 +90,7 @@ class PerformerImageList extends Component {
             <div>
                 {ImageList}
                 {this.state.performerImage ? (
-                        <Modal isOpen={this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}>
-                            {console.log(performerImages)}
-
+                        <Modal isOpen={this.state.isOpen} onClose={this.onCloseModal}>
                             <ModalImg>
                                 <OpenImg key={this.state.performerImage.id}
                                          src={performerImages[this.state.index].url} alt=""/>

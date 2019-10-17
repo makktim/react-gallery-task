@@ -51,7 +51,6 @@ class PerformerVideoList extends Component {
         const videoElement = this.refs.vidRef;
         let newVolume = volume_range.value;
         videoElement.volume = newVolume;
-
         this.setState({volume: Math.max(Math.min(newVolume, 1), 0)}, () => {
             videoElement.volume = this.state.volume;
         });
@@ -69,26 +68,30 @@ class PerformerVideoList extends Component {
     };
 
     onTimeUpdate = () => {
-        let currentTime = this.refs.vidRef.currentTime;
-        currentTime = getTime(Math.floor(currentTime));
-        this.setState({progressIndex: currentTime});
+        const {currentTime} = this.refs.vidRef;
+        const progressIndex = getTime(Math.floor(currentTime));
+        this.setState({progressIndex});
         this.onProgressCurrentTime();
     };
 
     onDurationChange = () => {
-        let duration = this.refs.vidRef.duration;
-        duration = getTime(Math.floor(duration));
-        this.setState({progressCount: duration});
-        this.setState({progressIndex: 0});
+        const {duration} = this.refs.vidRef;
+        const progressCount = getTime(Math.floor(duration));
+        this.setState({progressCount});
         this.onProgressCurrentTime();
     };
 
     onProgressCurrentTime = () => {
-        const duration = this.refs.vidRef.duration;
-        const currentTime = this.refs.vidRef.currentTime;
+        const {currentTime} = this.refs.vidRef;
+        const {duration} = this.refs.vidRef;
         let progressTime = currentTime / duration;
         progressTime = Math.round(progressTime * 100);
         this.setState({width: progressTime})
+    };
+
+
+    onCloseModal = () => {
+        this.setState({isOpen: false})
     };
 
 
@@ -106,11 +109,6 @@ class PerformerVideoList extends Component {
                         <GalleryImage key={index}>
                             <PlayerVideo key={index} id="play" ref="vidRef"
                                          poster={performerVideo.previewImageUrl} src={performerVideo.url}
-                                         onTimeUpdate={this.onTimeUpdate}
-                                         volume={this.state.volume}
-                                         changeVolume={this.changeVolume}
-                                         onDurationChange={this.onDurationChange}
-
                             />
                             <LockImg src={lock} alt=""/>
                         </GalleryImage>
@@ -120,17 +118,11 @@ class PerformerVideoList extends Component {
                     <GalleryImage key={index}>
                         <PlayerVideo key={index} id="play" ref="vidRef"
                                      poster={performerVideo.previewImageUrl} src={performerVideo.url}
-                                     onTimeUpdate={this.onTimeUpdate}
-                                     volume={this.state.volume}
-                                     changeVolume={this.changeVolume}
-                                     onDurationChange={this.onDurationChange}
-
                         />
                         <PlayButton onClick={(e) => {
                             this.setState({performerVideo: performerVideo});
                             this.setState({isOpen: true})
                         }}>PLAY</PlayButton>
-
                     </GalleryImage>
                 )
 
@@ -146,7 +138,7 @@ class PerformerVideoList extends Component {
             <div>
                 {performerVideoList}
                 {this.state.performerVideo ? (
-                        <Modal isOpen={this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}>
+                        <Modal isOpen={this.state.isOpen} onClose={this.onCloseModal}>
                             <Player>
                                 <PlayerVideo id="play" autoPlay ref="vidRef"
 
@@ -154,21 +146,18 @@ class PerformerVideoList extends Component {
                                              src={this.state.performerVideo.url}
                                              onTimeUpdate={this.onTimeUpdate}
                                              onDurationChange={this.onDurationChange}
-                                             onClick={this.pauseVideo.bind(this)}
-
+                                             onClick={this.pauseVideo}
                                 />
                                 <PlayerControls>
                                     <Progress>
                                         <ProgressFilled progress={this.state.width}/>
                                     </Progress>
-
-
                                     <div className="ply-btn">
                                         <PlayerButton id='playButton' title="Toggle Play" src={play}
-                                                      onClick={this.playVideo.bind(this)}
+                                                      onClick={this.playVideo}
                                                       alt=""/>
                                         <PlayerButton id='pauseButton' title="Toggle Pause" src={pause}
-                                                      onClick={this.pauseVideo.bind(this)} alt=""/>
+                                                      onClick={this.pauseVideo} alt=""/>
 
                                     </div>
                                     <CurrentTime>{this.state.progressIndex}/{this.state.progressCount} </CurrentTime>
@@ -182,7 +171,7 @@ class PerformerVideoList extends Component {
                                                      step={0.1}
                                                      min={0}
                                                      max={1}
-                                                     onChange={this.changeVolume.bind(this)}/>
+                                                     onChange={this.changeVolume}/>
                                     </div>
                                 </PlayerControls>
                             </Player>

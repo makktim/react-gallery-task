@@ -9,15 +9,13 @@ export const DialogStyles = styled.div`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    zIndex: 999;
+    z-index: 999;
     background-color: rgba(121, 13, 13, 0.83);
     padding: 10px 20px 40px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    `
-;
-
+`;
 
 
 export const DialogCloseButtonStyle = styled.button`

@@ -14,16 +14,16 @@ import {
 } from './VideoStyle';
 import {GalleryImage} from '../style';
 
-let getTime = (time) => {
-    let minutes = time < 60 ? 0 : Math.floor(time / 60);
-    let seconds = Math.floor(time - (minutes * 60)) * .01;
+const getTime = (time) => {
+    const minutes = time < 60 ? 0 : Math.floor(time / 60);
+    const seconds = Math.floor(time - (minutes * 60)) * .01;
     return (minutes + seconds).toFixed(2);
 };
 
 class Video extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             isOpen: false,
             playIndex: 0,
@@ -37,7 +37,7 @@ class Video extends React.Component {
 
     playVideo() {
         this.refs.vidRef.play();
-        console.log(this.state.id)
+        console.log(this.state.id);
         console.log(this.refs.vidref);
     }
 
@@ -56,9 +56,14 @@ class Video extends React.Component {
     onDurationChange = () => {
         let duration = this.refs.vidRef.duration;
         duration = getTime(Math.floor(duration));
-        this.setState({progressCount: duration})
-        this.setState({progressIndex: 0})
+        this.setState({progressCount: duration});
     };
+
+
+    onCloseModal = () => {
+        this.setState({isOpen: false})
+    };
+
 
     render() {
         return (
@@ -73,10 +78,9 @@ class Video extends React.Component {
                 <PlayButton onClick={(e) => this.setState({isOpen: true})}>PLAY</PlayButton>
 
 
-                <Modal isOpen={this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}>
+                <Modal isOpen={this.state.isOpen} onClose={this.onCloseModal}>
                     <Player>
                         <PlayerVideo id="play" autoPlay ref="vidRef"
-
                                      poster={this.props.performerImage.previewImageUrl}
                                      src={this.props.performerImage.url}
                                      onTimeUpdate={this.onTimeUpdate}
@@ -88,10 +92,10 @@ class Video extends React.Component {
                             </Progress>
                             <div className="ply-btn">
                                 <PlayerButton id='playButton' title="Toggle Play" src={play}
-                                              onClick={this.playVideo.bind(this)}
+                                              onClick={this.playVideo}
                                               alt=""/>
                                 <PlayerButton id='pauseButton' title="Toggle Pause" src={pause}
-                                              onClick={this.pauseVideo.bind(this)} alt=""/>
+                                              onClick={this.pauseVideo} alt=""/>
 
                             </div>
                             <CurrentTime>{this.state.progressIndex}/{this.state.progressCount} </CurrentTime>

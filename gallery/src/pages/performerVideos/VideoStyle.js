@@ -15,8 +15,9 @@ export const PlayButton = styled.button`
     box-shadow: 0 0 9px 7px black;
     
         &:hover{
-        background-color:rgba(0, 0, 0, 0.5);
-        padding: 20px 45px;
+            background-color:rgba(0, 0, 0, 0.5);
+            padding: 20px 45px;
+        }
 `;
 
 export const Player = styled.div`
@@ -37,7 +38,7 @@ export const PlayerVideo = styled.video`
     &:hover{
         background-color:rgba(0, 0, 0, 0.5);
         transform: translateY(0);
-         }
+    }
                     
 `;
 
@@ -54,7 +55,7 @@ export const PlayerControls = styled.div`
     &:hover{
         transform: translateY(0);
         flex: 1;
-        }
+    }
 
     
 `;
@@ -70,7 +71,7 @@ export const Progress = styled.div`
     cursor: ew-resize;
     
     &:hover{
-    height: 15px;
+      height: 15px;
     }
     
 `;
@@ -92,26 +93,24 @@ export const ProgressFilled = styled.div`
     width: 50%;
     background: burlywood;
     flex: 0;
-    flex-basis: ${({ progress }) => progress + '%'};
+    flex-basis: ${({progress}) => progress + '%'};
     
 `;
 
-export const VolumeRange =styled.input`
-  -webkit-appearance: none;
-  margin-top: 10%;
-  height: 15px;
-  border-radius: 5px;
-  background: burlywood;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+export const VolumeRange = styled.input`
+    -webkit-appearance: none;
+    margin-top: 10%;
+    height: 15px;
+    border-radius: 5px;
+    background: burlywood;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
   
       &:hover{
         opacity: 1;
-        }
-       
-
+      }
 `;
 
 
