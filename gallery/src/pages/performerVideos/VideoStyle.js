@@ -28,7 +28,8 @@ export const Player = styled.div`
 `;
 
 export const PlayerVideo = styled.video`
-    width: 100%;
+    width: 97%;
+    margin: 5px;
     border: 1px solid darkred;
     box-shadow: 0 0 7px 4px black;
     position: relative;

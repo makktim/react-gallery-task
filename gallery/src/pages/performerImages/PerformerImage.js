@@ -1,19 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
     GalleryImage,
     Img,
     ImgBox,
     Caption,
     PublicTransparentBox,
-    ShowButton,
-    ModalImg,
-    OpenImg,
-    NextArrowImg, ArrowImg
+    ShowButton
 } from '../style';
-import PerformerImageList from "./PerformerImageList";
-import Modal from "../modal/Modal";
-import leftArrow from "../images/left_arrow.png";
-import rightArrow from "../images/right_arrow.png";
 
 
 export default (props) => {

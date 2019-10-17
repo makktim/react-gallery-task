@@ -1,113 +1,34 @@
 import React from 'react';
-import play from '../images/Play.png';
-import pause from '../images/Pause.png';
-import Modal from '../modal/Modal';
+import lock from "../images/229652.png";
 import {
     PlayButton,
-    Player,
-    PlayerVideo,
-    PlayerControls,
-    Progress,
-    PlayerButton,
-    ProgressFilled,
-    CurrentTime
+    PlayerVideo
 } from './VideoStyle';
-import {GalleryImage} from '../style';
-
-const getTime = (time) => {
-    const minutes = time < 60 ? 0 : Math.floor(time / 60);
-    const seconds = Math.floor(time - (minutes * 60)) * .01;
-    return (minutes + seconds).toFixed(2);
-};
-
-class Video extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpen: false,
-            playIndex: 0,
-            width: 0,
-            queueLength: 1,
-            isPlaying: false,
-            progressCount: 0,
-            progressIndex: 0
-        };
-    }
-
-    playVideo() {
-        this.refs.vidRef.play();
-        console.log(this.state.id);
-        console.log(this.refs.vidref);
-    }
-
-    pauseVideo() {
-        this.refs.vidRef.pause();
-        console.log(this.refs);
-    }
+import {GalleryImage, LockImg} from '../style';
 
 
-    onTimeUpdate = () => {
-        let currentTime = this.refs.vidRef.currentTime;
-        currentTime = getTime(Math.floor(currentTime));
-        this.setState({progressIndex: currentTime})
-    };
+export default (props) => {
 
-    onDurationChange = () => {
-        let duration = this.refs.vidRef.duration;
-        duration = getTime(Math.floor(duration));
-        this.setState({progressCount: duration});
-    };
+    const {performerVideo: {previewImageUrl, url, privacy, id}, onOpenModal, index, performerVideo} = props;
 
 
-    onCloseModal = () => {
-        this.setState({isOpen: false})
-    };
-
-
-    render() {
+    if (privacy === "exclusive") {
         return (
-
-            <GalleryImage>
-
-                <PlayerVideo id="play" ref="vidRef"
-                             poster={this.props.performerImage.previewImageUrl} src={this.props.performerImage.url}
-                             onTimeUpdate={this.onTimeUpdate}
-                             onDurationChange={this.onDurationChange}
-                />
-                <PlayButton onClick={(e) => this.setState({isOpen: true})}>PLAY</PlayButton>
-
-
-                <Modal isOpen={this.state.isOpen} onClose={this.onCloseModal}>
-                    <Player>
-                        <PlayerVideo id="play" autoPlay ref="vidRef"
-                                     poster={this.props.performerImage.previewImageUrl}
-                                     src={this.props.performerImage.url}
-                                     onTimeUpdate={this.onTimeUpdate}
-                                     onDurationChange={this.onDurationChange}
-                        />
-                        <PlayerControls>
-                            <Progress>
-                                <ProgressFilled/>
-                            </Progress>
-                            <div className="ply-btn">
-                                <PlayerButton id='playButton' title="Toggle Play" src={play}
-                                              onClick={this.playVideo}
-                                              alt=""/>
-                                <PlayerButton id='pauseButton' title="Toggle Pause" src={pause}
-                                              onClick={this.pauseVideo} alt=""/>
-
-                            </div>
-                            <CurrentTime>{this.state.progressIndex}/{this.state.progressCount} </CurrentTime>
-                        </PlayerControls>
-                    </Player>
-
-                </Modal>
+            <GalleryImage key={id}>
+                <PlayerVideo poster={previewImageUrl} src={url} alt=""/>
+                <LockImg src={lock} alt=""/>
             </GalleryImage>
 
         )
     }
+    return (
+        <GalleryImage key={id}>
+            <PlayerVideo poster={previewImageUrl} src={url} alt=""/>
+            <PlayButton onClick={(e) => {
+                onOpenModal(index, performerVideo);
+            }}>play</PlayButton>
+        </GalleryImage>
+
+    )
 
 };
-
-export default Video;

@@ -1,12 +1,6 @@
 import React, {Component} from 'react';
 import {
-    Caption,
-    GalleryImage,
-    Img,
-    ImgBox,
     ModalImg,
-    PublicTransparentBox,
-    ShowButton,
     ArrowImg,
     OpenImg,
     NextArrowImg
@@ -47,14 +41,9 @@ class PerformerImageList extends Component {
         }
     };
 
-    onCloseModal = () => {
-        this.setState({isOpen: false})
-    };
-
     onOpenModal = (index, performerImage) => {
         this.setState({isOpen: true, index: index, performerImage: performerImage});
     };
-
 
 
     componentDidMount() {

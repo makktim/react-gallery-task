@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import {GalleryImage, LockImg} from "../style";
 import {loadPerformerVideos} from "../../actions/PerformerVideosAction";
 import {connect} from "react-redux";
 import {
     CurrentTime,
-    PlayButton,
     Player,
     PlayerButton,
     PlayerControls,
@@ -17,7 +15,7 @@ import Modal from "../modal/Modal";
 import play from "../images/Play.png";
 import pause from "../images/Pause.png";
 import speaker from "../images/Speaker.png";
-import lock from "../images/229652.png";
+import PerformerVideo from "./PerformerVideo";
 
 
 const getTime = (time) => {
@@ -33,16 +31,11 @@ class PerformerVideoList extends Component {
         super(props);
         this.state = {
             isOpen: false,
-            playIndex: 0,
             width: 0,
-            queueLength: 1,
-            isPlaying: false,
             progressCount: 0,
             progressIndex: 0,
             performerVideo: null,
-            progress: 0,
             volume: 0.5,
-            setMuted: false
         };
     }
 
@@ -94,49 +87,29 @@ class PerformerVideoList extends Component {
         this.setState({isOpen: false})
     };
 
+    onOpenModal = (index, performerVideo) => {
+        this.setState({isOpen: true, index: index, performerVideo: performerVideo});
+    };
 
     componentDidMount() {
         this.props.loadPerformerVideos(this.props)
     }
 
-
     render() {
         const {performerVideos} = this.props;
-        const performerVideoList = performerVideos.length ? (
-            performerVideos.map((performerVideo, index) => {
-                if (performerVideo.privacy === "exclusive") {
-                    return (
-                        <GalleryImage key={index}>
-                            <PlayerVideo key={index} id="play" ref="vidRef"
-                                         poster={performerVideo.previewImageUrl} src={performerVideo.url}
-                            />
-                            <LockImg src={lock} alt=""/>
-                        </GalleryImage>
-                    )
-                }
-                return (
-                    <GalleryImage key={index}>
-                        <PlayerVideo key={index} id="play" ref="vidRef"
-                                     poster={performerVideo.previewImageUrl} src={performerVideo.url}
-                        />
-                        <PlayButton onClick={(e) => {
-                            this.setState({performerVideo: performerVideo});
-                            this.setState({isOpen: true})
-                        }}>PLAY</PlayButton>
-                    </GalleryImage>
-                )
 
-            })
-        ) : (
-            <div>
-                <p>No Models</p>
-            </div>
-        );
-
+        const renderPerformerVideo = (performerVideo, index) => {
+            return (
+                <div key={index}>
+                    <PerformerVideo key={index} performerVideo={performerVideo} index={index}
+                                    isopen={this.state.isOpen} onOpenModal={this.onOpenModal}/>
+                </div>
+            )
+        };
 
         return (
             <div>
-                {performerVideoList}
+                {performerVideos.length > 0 && performerVideos.map(renderPerformerVideo)}
                 {this.state.performerVideo ? (
                         <Modal isOpen={this.state.isOpen} onClose={this.onCloseModal}>
                             <Player>
@@ -181,7 +154,7 @@ class PerformerVideoList extends Component {
                     <div></div>}
             </div>
         );
-    }
+    };
 
 }
 
