@@ -9,6 +9,7 @@ export default (props) => {
     const {performerAlbum: {previewImageUrl, id, title, type, index, privacy}} = props;
     const {modelName} = props;
 
+
     if (privacy === "exclusive") {
         if (type === "video") {
             return (
@@ -43,8 +44,8 @@ export default (props) => {
             )
         }
     }
-    if (privacy === "public") {
-        if (type === "video") {
+
+    if (privacy === "public" && type === "video") {
             return (
                 <GalleryImage key={index}>
                     <ImgBox>
@@ -76,5 +77,4 @@ export default (props) => {
                 </GalleryImage>
             )
         }
-    }
 };

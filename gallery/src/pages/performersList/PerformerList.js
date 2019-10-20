@@ -7,6 +7,7 @@ class PerformerList extends Component {
 
     componentDidMount() {
         this.props.loadImages();
+
     }
 
 

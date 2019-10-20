@@ -2,7 +2,10 @@ import {PERFORMERS, PERFORMERALBUMS, PERFORMERIMAGES, PERFORMERVIDEOS} from "../
 import {takeEvery, call, put} from 'redux-saga/effects';
 import {fetchPerformers, fetchPerformerAlbums, fetchPerformerAlbumImages, fetchPerformerVideos} from "../api/ApiServices";
 import {setImages, setError} from "../actions";
-import {setPerformerAlbums, setPerformerAlbumsError} from "../actions/PerformerAlbumsActions";
+import {
+    setPerformerAlbums,
+    setPerformerAlbumsError
+} from "../actions/PerformerAlbumsActions";
 import {setPerformerImages, setPerformerImagesError} from "../actions/PerformerImagesAction";
 import {setPerformerVideos, setPerformerVideosError} from "../actions/PerformerVideosAction";
 

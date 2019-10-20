@@ -1,6 +1,5 @@
 import {PERFORMERALBUMS} from '../constans';
 
-
 const loadPerformerAlbums = (props) => ({
     type: PERFORMERALBUMS.LOAD,
     props,

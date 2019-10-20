@@ -9,6 +9,7 @@ import VideoReducer from "./VideoReducer";
 
 
 const rootreducer = combineReducers({
+
     isLoading: LoadingReducer,
     performers: performersReducer,
     performerAlbums: AlbumReducer,

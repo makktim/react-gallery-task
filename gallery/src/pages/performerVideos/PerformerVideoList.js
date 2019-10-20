@@ -17,7 +17,6 @@ import pause from "../images/Pause.png";
 import speaker from "../images/Speaker.png";
 import PerformerVideo from "./PerformerVideo";
 
-
 const getTime = (time) => {
     let minutes = time < 60 ? 0 : Math.floor(time / 60);
     let seconds = Math.floor(time - (minutes * 60)) * .01;
