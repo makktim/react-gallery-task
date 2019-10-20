@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const DialogStyles = styled.div`
     max-width: fit-content;
-    width: 90%;
+    max-height: fit-content;
+    width: 80%;
     height: auto;
     margin: 0 auto;
     position: fixed;
@@ -11,10 +12,15 @@ export const DialogStyles = styled.div`
     transform: translate(-50%, -50%);
     z-index: 999;
     background-color: rgba(121, 13, 13, 0.83);
-    padding: 10px 20px 40px;
+    padding: 10px 10px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    
+    @media(min-width: 700px){
+        width: 90%;
+        padding: 10px 20px 40px;
+    }
 `;
 
 

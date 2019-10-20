@@ -30,6 +30,7 @@ class PerformerVideoList extends Component {
         super(props);
         this.state = {
             isOpen: false,
+            onfullscreenchange: false,
             width: 0,
             progressCount: 0,
             progressIndex: 0,
@@ -80,7 +81,6 @@ class PerformerVideoList extends Component {
         progressTime = Math.round(progressTime * 100);
         this.setState({width: progressTime})
     };
-
 
     onCloseModal = () => {
         this.setState({isOpen: false})

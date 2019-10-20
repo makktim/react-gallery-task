@@ -31,11 +31,14 @@ export const Img = styled.img`
 export const ImgBox = styled.div`
     margin: 10px;
     border: 1px solid darkred;
-    height: 267px;
-    width: 400px;
+    height: min-content;
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    
+    @media(min-width: 700px){
+       height: 220px;
+    }
    
     &:hover{
         background-color:rgba(0, 0, 0, 0.5);
@@ -111,34 +114,42 @@ export const ModalImg = styled.div`
 `;
 
 
-export const ArrowImg = styled.img`
+export const PrevArrowImg = styled.img`
     cursor: pointer;
-    position: absolute;
-    top: 50%;
     width: auto;
-    padding: 5px;
-    margin-left: 30px;
-    margin-top: -50px;
-    user-select: none;
+    left: 0;
     border-radius: 50%;
+    user-select: none;
     background-color: #deb887db;
     -webkit-user-select: none;
+    
+    @media(min-width: 700px){
+        position: absolute;
+        top: 50%;
+        padding: 5px;
+        margin-right: 35px;
+        margin-top: -50px;
+        right: 99%;
+    }
 
 `;
 
 export const NextArrowImg = styled.img`
     cursor: pointer;
     position: absolute;
-    top: 50%;
     width: auto;
-    padding: 5px;
-    margin-right: 35px;
-    margin-top: -50px;
-    border-radius: 50%;
+    right: 0;
     user-select: none;
+    border-radius: 50%;
     background-color: #deb887db;
     -webkit-user-select: none;
-    right: 99%;
+    
+    @media(min-width: 700px){
+        top: 50%;
+        padding: 5px;
+        margin-left: 30px;
+        margin-top: -50px;
+    }
 
 `;
 
@@ -148,6 +159,11 @@ export const OpenImg = styled.img`
     max-width: 600px;
     width: 100%;
     transition: transform 0.4s ease;
+    
+    @media(min-width: 700px){
+        max-height: 800px;
+        max-width: 600px;
+    }
    
 `;
 

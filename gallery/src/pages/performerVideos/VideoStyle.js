@@ -38,7 +38,6 @@ export const PlayerVideo = styled.video`
     
     &:hover{
         background-color:rgba(0, 0, 0, 0.5);
-        transform: translateY(0);
     }
                     
 `;
@@ -46,16 +45,15 @@ export const PlayerVideo = styled.video`
 export const PlayerControls = styled.div`
     display: flex;
     position: absolute;
-    bottom: 0;
-    width: 100%;
+    bottom: 15%;
+    width: 99%;
     transform: translateY(100%) translateY(-5px);
     transition: all .3s;
     flex-wrap: wrap;
     background: rgba(0,0,0,0.1);
     
-    &:hover{
-        transform: translateY(0);
-        flex: 1;
+    @media(min-width: 700px){
+        bottom: 1%;
     }
 
     
@@ -100,8 +98,9 @@ export const ProgressFilled = styled.div`
 
 export const VolumeRange = styled.input`
     -webkit-appearance: none;
-    margin-top: 10%;
+    margin-top: 12%;
     height: 15px;
+    width: 115px;
     border-radius: 5px;
     background: burlywood;
     outline: none;
@@ -109,6 +108,12 @@ export const VolumeRange = styled.input`
     -webkit-transition: .2s;
     transition: opacity .2s;
   
+      @media(min-width: 700px){
+        width: 180px;
+        margin-top: 8%;
+    }
+  
+
       &:hover{
         opacity: 1;
       }

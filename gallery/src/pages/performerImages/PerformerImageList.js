@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {
     ModalImg,
-    ArrowImg,
+    PrevArrowImg,
     OpenImg,
     NextArrowImg
 } from "../style";
@@ -71,8 +71,9 @@ class PerformerImageList extends Component {
                             <ModalImg>
                                 <OpenImg key={this.state.performerImage.id}
                                          src={performerImages[this.state.index].url} alt=""/>
-                                <NextArrowImg onClick={(e) => this.prevProperty(performerImages)} src={leftArrow}/>
-                                <ArrowImg onClick={(e) => this.nextProperty(performerImages)} src={rightArrow}/>
+                                <PrevArrowImg onClick={(e) => this.prevProperty(performerImages)} src={leftArrow}/>
+                                <NextArrowImg onClick={(e) => this.nextProperty(performerImages)} src={rightArrow}/>
+
                             </ModalImg>
                         </Modal>
                     ) :
