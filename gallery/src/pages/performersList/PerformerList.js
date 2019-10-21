@@ -1,18 +1,19 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import Performer from "./Performer";
 import {connect} from 'react-redux';
 import {loadImages} from "../../actions";
 
-class PerformerList extends Component {
-
-    componentDidMount() {
-        this.props.loadImages();
-
-    }
 
 
-    render() {
-        const {performers} = this.props;
+
+const PerformerList = (props) => {
+
+    useEffect(() => {
+        props.loadImages();
+
+    }, []);
+
+        const {performers} = props;
         const renderPerformer = (performer, index) => {
             return (
 
@@ -25,9 +26,8 @@ class PerformerList extends Component {
                 {performers.length > 0 && performers.map(renderPerformer)}
             </div>
         )
-    }
+};
 
-}
 
 const mapStateToProps = ({isLoading, performers, error}) => ({
     isLoading,

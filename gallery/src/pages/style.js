@@ -19,7 +19,7 @@ export const GalleryImage = styled.div`
     `;
 
 export const Img = styled.img`
-    height: calc(100%);
+    height: auto;
     width: 100%;
     transition: transform 0.4s ease;
     

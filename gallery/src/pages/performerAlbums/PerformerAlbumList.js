@@ -1,33 +1,33 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {loadPerformerAlbums} from "../../actions/PerformerAlbumsActions";
 import PerformerAlbum from "./PerformerAlbum";
 
 
-class PerformerAlbumList extends Component {
 
-    componentDidMount() {
-        this.props.loadPerformerAlbums(this.props);
-    }
+const PerformerAlbumList = (props) => {
 
-    render() {
-        const {performerAlbums} = this.props;
-        const modelName = this.props.match.params.pid;
+    useEffect(() => {
+        props.loadPerformerAlbums(props);
 
-        const renderPerformerAlbum = (performerAlbum, index) => {
-            return (
+    }, []);
 
-                <PerformerAlbum key={index} performerAlbum={performerAlbum} modelName={modelName}/>
-            )
-        };
+    const {performerAlbums} = props;
+    const modelName = props.match.params.pid;
 
+    const renderPerformerAlbum = (performerAlbum, index) => {
         return (
-            <div>
-                {performerAlbums.length > 0 && performerAlbums.map(renderPerformerAlbum)}
-            </div>
+
+            <PerformerAlbum key={index} performerAlbum={performerAlbum} modelName={modelName}/>
         )
-    }
-}
+    };
+
+    return (
+        <div>
+            {performerAlbums.length > 0 && performerAlbums.map(renderPerformerAlbum)}
+        </div>
+    )
+};
 
 const mapStateToProps = ({isLoading, performerAlbums, error}) => ({
     isLoading,
