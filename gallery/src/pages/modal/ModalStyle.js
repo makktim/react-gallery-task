@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const DialogStyles = styled.div`
     max-width: fit-content;
     max-height: fit-content;
-    width: 80%;
     height: auto;
+    width: 70%;
     margin: 0 auto;
     position: fixed;
     left: 50%;
@@ -17,7 +17,8 @@ export const DialogStyles = styled.div`
     display: flex;
     flex-direction: column;
     
-    @media(min-width: 700px){
+    
+    @media(min-height: 700px){
         width: 90%;
         padding: 10px 20px 40px;
     }

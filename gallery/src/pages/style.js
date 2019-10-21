@@ -19,7 +19,7 @@ export const GalleryImage = styled.div`
     `;
 
 export const Img = styled.img`
-    height: auto;
+    height: calc(100%);
     width: 100%;
     transition: transform 0.4s ease;
     
@@ -61,7 +61,7 @@ export const Caption = styled.div`
 export const PublicTransparentBox = styled.div`
     height: 100%;
     width: 100%;
-    position: absolute;
+    position: static;
     top: 0;
     left: 0;
     transition: background-color 0.3s ease;
@@ -106,7 +106,8 @@ export const Button = styled.button`
 `;
 
 export const ModalImg = styled.div`
-    width: 100%;
+    max-width: 100%;
+    max-height: 95vh;
     height: auto;
     object-fit: cover;
     position: relative;
@@ -117,15 +118,15 @@ export const ModalImg = styled.div`
 export const PrevArrowImg = styled.img`
     cursor: pointer;
     width: auto;
+    position: absolute;
+    top: 50%;
     left: 0;
     border-radius: 50%;
     user-select: none;
     background-color: #deb887db;
     -webkit-user-select: none;
     
-    @media(min-width: 700px){
-        position: absolute;
-        top: 50%;
+    @media(min-width: 768px){
         padding: 5px;
         margin-right: 35px;
         margin-top: -50px;
@@ -138,14 +139,14 @@ export const NextArrowImg = styled.img`
     cursor: pointer;
     position: absolute;
     width: auto;
+    top: 50%;
     right: 0;
     user-select: none;
     border-radius: 50%;
     background-color: #deb887db;
     -webkit-user-select: none;
     
-    @media(min-width: 700px){
-        top: 50%;
+    @media(min-width: 768px){
         padding: 5px;
         margin-left: 30px;
         margin-top: -50px;
@@ -155,15 +156,13 @@ export const NextArrowImg = styled.img`
 
 export const OpenImg = styled.img`
     height: auto;
-    max-height: 800px;
-    max-width: 600px;
-    width: 100%;
+    margin-left: 5%;
+    max-width: 90%;
+    max-height: 95vh;
     transition: transform 0.4s ease;
     
-    @media(min-width: 700px){
-        max-height: 800px;
-        max-width: 600px;
-    }
+
+    
    
 `;
 

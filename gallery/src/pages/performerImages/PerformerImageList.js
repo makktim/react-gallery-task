@@ -56,7 +56,7 @@ class PerformerImageList extends Component {
 
         const renderPerformerImage = (performerImage, index) => {
             return (
-                <div key={index} >
+                <div key={index}>
                     <PerformerImage key={index} performerImage={performerImage} modelName={modelName} index={index}
                                     isopen={this.state.isOpen} onOpenModal={this.onOpenModal}/>
                 </div>
@@ -69,12 +69,13 @@ class PerformerImageList extends Component {
                 {this.state.performerImage ? (
                         <Modal isOpen={this.state.isOpen} onClose={(e) => this.setState({isOpen: false})}>
                             <ModalImg>
-                                <OpenImg key={this.state.performerImage.id}
-                                         src={performerImages[this.state.index].url} alt=""/>
-                                <PrevArrowImg onClick={(e) => this.prevProperty(performerImages)} src={leftArrow}/>
-                                <NextArrowImg onClick={(e) => this.nextProperty(performerImages)} src={rightArrow}/>
-
+                                <OpenImg
+                                    key={this.state.performerImage.id}
+                                    src={performerImages[this.state.index].url} alt=""/>
                             </ModalImg>
+                            <PrevArrowImg onClick={(e) => this.prevProperty(performerImages)} src={leftArrow}/>
+                            <NextArrowImg onClick={(e) => this.nextProperty(performerImages)} src={rightArrow}/>
+
                         </Modal>
                     ) :
                     <div></div>}
@@ -82,6 +83,7 @@ class PerformerImageList extends Component {
         )
     }
 }
+
 const mapStateToProps = ({isLoading, performerImages, error}) => ({
     isLoading,
     performerImages,

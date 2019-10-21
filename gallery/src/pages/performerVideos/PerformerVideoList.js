@@ -7,6 +7,7 @@ import {
     PlayerButton,
     PlayerControls,
     PlayerVideo,
+    VolumeButton,
     Progress,
     VolumeRange,
     ProgressFilled
@@ -135,7 +136,7 @@ class PerformerVideoList extends Component {
                                     <CurrentTime>{this.state.progressIndex}/{this.state.progressCount} </CurrentTime>
 
                                     <div>
-                                        <PlayerButton src={speaker} id="speaker"/>
+                                        <VolumeButton src={speaker} id="speaker"/>
                                     </div>
                                     <div>
                                         <VolumeRange type="range" id="volume" className="volume_range"

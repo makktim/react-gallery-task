@@ -53,7 +53,7 @@ export const PlayerControls = styled.div`
     background: rgba(0,0,0,0.1);
     
     @media(min-width: 700px){
-        bottom: 1%;
+        bottom: 11%;
     }
 
     
@@ -88,6 +88,24 @@ export const PlayerButton = styled.img`
     
 `;
 
+export const VolumeButton = styled.img`
+    background: none;
+    border: 0;
+    display: none;
+    line-height: 1;
+    color: white;
+    text-align: center;
+    outline: 0;
+    padding: 0;
+    cursor: pointer;
+    max-width: 50px;
+    
+    @media(min-width: 700px){
+       display: block;
+    }
+    
+`;
+
 export const ProgressFilled = styled.div`
     width: 50%;
     background: burlywood;
@@ -98,9 +116,10 @@ export const ProgressFilled = styled.div`
 
 export const VolumeRange = styled.input`
     -webkit-appearance: none;
-    margin-top: 12%;
+    display: none;
+    margin-top: 12px;
     height: 15px;
-    width: 115px;
+    width: 5em;
     border-radius: 5px;
     background: burlywood;
     outline: none;
@@ -110,6 +129,7 @@ export const VolumeRange = styled.input`
   
       @media(min-width: 700px){
         width: 180px;
+        display: block;
         margin-top: 8%;
     }
   
