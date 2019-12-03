@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DialogStyles = styled.div`
+export const MyModal = styled.div`
     max-width: fit-content;
     max-height: fit-content;
     height: auto;
@@ -10,7 +10,7 @@ export const DialogStyles = styled.div`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    z-index: 999;
+    z-index: 1;
     background-color: rgba(121, 13, 13, 0.83);
     padding: 10px 10px;
     border-radius: 8px;
@@ -25,7 +25,7 @@ export const DialogStyles = styled.div`
 `;
 
 
-export const DialogCloseButtonStyle = styled.button`
+export const ModalCloseButtonStyle = styled.button`
     margin-bottom: 15px;
     padding: 3px 8px;
     cursor: pointer;

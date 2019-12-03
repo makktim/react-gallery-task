@@ -35,11 +35,12 @@ const NavBarStyle = styled.nav`
           background-color: beige;
           color: darkred;
      }
+     
+    @media(min-width: 768px){
+           margin: 10px;
+           margin-right: 35%;
+    }
 
-           @media screen and (max-width: 768px) {
-               margin 10px;
-               margin-right: 35%;
-  }
   }
 
 `;

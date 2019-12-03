@@ -11,7 +11,7 @@ const PerformerList = (props) => {
     useEffect(() => {
         props.loadImages();
 
-    }, []);
+    },  []);
 
         const {performers} = props;
         const renderPerformer = (performer, index) => {

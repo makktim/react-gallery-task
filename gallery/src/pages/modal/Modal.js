@@ -1,24 +1,31 @@
 import React, {Component} from 'react';
-import {DialogCloseButtonStyle, DialogStyles} from './ModalStyle';
+import {ModalCloseButtonStyle, MyModal} from './ModalStyle';
 
-
+// const  {isOpen, onClose, chidlren} = props;
+//
+// export default Modal = isOpen ? (
+//     <ModalStyle>
+//         <ModalCloseButtonStyle onClick={onClose} />
+//         <div>{children}</div>
+//     </ModalStyle>
+// ) : null;
 
 class Modal extends Component {
     render() {
 
-        let dialog = (
-            <DialogStyles>
-                <DialogCloseButtonStyle onClick={this.props.onClose}>X</DialogCloseButtonStyle>
+        let modal = (
+            <MyModal>
+                <ModalCloseButtonStyle onClick={this.props.onClose}>X</ModalCloseButtonStyle>
                 <div>{this.props.children}</div>
-            </DialogStyles>
+            </MyModal>
         );
 
         if (!this.props.isOpen) {
-            dialog = null
+            modal = null
         }
         return (
             <div>
-                {dialog}
+                {modal}
             </div>
         )
     }

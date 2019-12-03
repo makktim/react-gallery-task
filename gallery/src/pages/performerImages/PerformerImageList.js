@@ -26,7 +26,7 @@ class PerformerImageList extends Component {
 
     nextProperty = (performerImages) => {
         if (this.state.index < performerImages.length - 1) {
-            this.setState({index: this.state.index + 1});
+            this.setState(({ index }) => ({ index: index + 1 }));
         } else {
             this.setState({index: 0});
         }
@@ -35,7 +35,7 @@ class PerformerImageList extends Component {
 
     prevProperty = (performerImages) => {
         if (this.state.index > 0) {
-            this.setState({index: this.state.index - 1});
+            this.setState(({ index }) => ({ index: index - 1 }));
         } else {
             this.setState({index: performerImages.length - 1});
         }

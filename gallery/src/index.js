@@ -11,8 +11,6 @@ const store = configureStore();
 
 ReactDOM.render((
     <Provider store={store}>
-        <Fragment>
-            <App />
-        </Fragment>
+        <App/>
     </Provider>
 ), document.getElementById('root'));

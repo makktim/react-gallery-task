@@ -67,7 +67,6 @@ export const Progress = styled.div`
     height: 5px;
     transition: height 0.3s;
     background: rgba(0,0,0,0.5);
-    cursor: ew-resize;
     
     &:hover{
       height: 15px;
@@ -106,13 +105,12 @@ export const VolumeButton = styled.img`
     
 `;
 
-export const ProgressFilled = styled.div`
+export const ProgressFilled = styled.div.attrs(({progress}) => ({style: {flexBasis: `${progress}%`}}))`
     width: 50%;
     background: burlywood;
     flex: 0;
-    flex-basis: ${({progress}) => progress + '%'};
-    
-`;
+`
+;
 
 export const VolumeRange = styled.input`
     -webkit-appearance: none;

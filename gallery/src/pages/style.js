@@ -122,9 +122,7 @@ export const PrevArrowImg = styled.img`
     top: 50%;
     left: 0;
     border-radius: 50%;
-    user-select: none;
     background-color: #deb887db;
-    -webkit-user-select: none;
     
     @media(min-width: 768px){
         padding: 5px;
@@ -141,10 +139,8 @@ export const NextArrowImg = styled.img`
     width: auto;
     top: 50%;
     right: 0;
-    user-select: none;
     border-radius: 50%;
     background-color: #deb887db;
-    -webkit-user-select: none;
     
     @media(min-width: 768px){
         padding: 5px;
