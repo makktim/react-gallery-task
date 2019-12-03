@@ -38,7 +38,6 @@ const NavBarStyle = styled.nav`
      
     @media(min-width: 768px){
            margin: 10px;
-           margin-right: 35%;
     }
 
   }
